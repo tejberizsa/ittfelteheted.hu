@@ -30,7 +30,7 @@ namespace IttFelTeheted.API.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
-                return BadRequest("Username already exists");
+                return BadRequest("Már van ilyen nevű felhasználó!");
 
             var userToCreate = new User
             {
