@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,14 @@ export class AuthService {
   baseUrl = 'http://localhost:5000/api/auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
+  registerMode = new BehaviorSubject<boolean>(false);
+  statusRegisterMode = this.registerMode.asObservable();
 
 constructor(private http: HttpClient) { }
+
+toggleRegisterMode(regMode: boolean) {
+  this.registerMode.next(regMode);
+}
 
 login(model: any) {
   return this.http.post(this.baseUrl + 'login', model).pipe(
@@ -26,11 +33,13 @@ login(model: any) {
 }
 
 register(model: any) {
+  this.toggleRegisterMode(false);
   return this.http.post(this.baseUrl + 'register', model);
 }
 
 loggedIn() {
   const token = localStorage.getItem('token');
+  this.toggleRegisterMode(false);
   return !this.jwtHelper.isTokenExpired(token);
 }
 

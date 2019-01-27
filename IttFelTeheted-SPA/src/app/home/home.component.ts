@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,15 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  registerMode = true;
+  registerMode: boolean;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-  }
-
-  cancelRegisterMode(registerMode: boolean) {
-    this.registerMode = registerMode;
+    this.authService.statusRegisterMode.subscribe(registerMode => this.registerMode = registerMode);
   }
 
 }

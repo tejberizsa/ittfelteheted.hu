@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">IttFelteheted.hu</a>
+  <a class="navbar-brand" [routerLink]="['/home']">IttFelteheted.hu</a>
 
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,14 +7,14 @@
 
   <div class="navbar-collapse collapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item mr-sm-4">
-        <a *ngIf="loggedIn()" class="nav-link" href="#">Üzenetek</a>
+      <li class="nav-item mr-sm-4" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/lists']">Toplista</a>
       </li>
-      <li class="nav-item mr-sm-4">
-        <a class="nav-link" href="#">Toplista</a>
+      <li class="nav-item mr-sm-4" routerLinkActive="active" >
+        <a class="nav-link text-info" [routerLink]="['/detail']">Egy véletlen kérdés</a>
       </li>
-      <li class="nav-item mr-sm-4">
-        <a class="nav-link text-info" href="#">Egy véletlen kérdés</a>
+      <li class="nav-item mr-sm-4" routerLinkActive="active">
+        <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
       </li>
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -46,6 +46,6 @@
       <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit">Bejelentkezek</button>
     </form>
   </div>
-  <button *ngIf="!loggedIn()" class="btn btn-info my-2 my-sm-0" type="submit">Regisztrálok</button>
+  <button *ngIf="!loggedIn()" (click)="initRegisterMode()" class="btn btn-info my-2 my-sm-0" type="submit">Regisztrálok</button>
 </div>
 </nav>
