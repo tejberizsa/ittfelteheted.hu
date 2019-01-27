@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
   }
 
   cancel() {
-    this.authService.toggleRegisterMode(false);
   }
 
 }

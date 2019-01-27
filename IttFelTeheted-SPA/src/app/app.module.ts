@@ -18,6 +18,7 @@ import { QuestionDetailComponent } from './question/questionDetail/questionDetai
 import { AnswerComponent } from './question/answer/answer.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
+import { RegisterGuard } from './_guards/register.guard';
 
 @NgModule({
    declarations: [
@@ -41,7 +42,8 @@ import { AuthGuard } from './_guards/auth.guard';
       AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
-      AuthGuard
+      AuthGuard,
+      RegisterGuard
    ],
    bootstrap: [
       AppComponent

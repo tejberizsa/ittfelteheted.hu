@@ -21,6 +21,7 @@ export class NavComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Sikeresen bejelentkeztél');
+      this.router.navigate(['/home']);
     }, error => {
       this.alertify.error(error);
     });
@@ -35,9 +36,4 @@ export class NavComponent implements OnInit {
     this.alertify.message('Kijelentkezve');
     this.router.navigate(['/home']);
   }
-
-  initRegisterMode() {
-    this.authService.toggleRegisterMode(true);
-  }
-
 }

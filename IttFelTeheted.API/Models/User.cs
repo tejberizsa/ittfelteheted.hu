@@ -1,3 +1,5 @@
+using System;
+
 namespace IttFelTeheted.API.Models
 {
     public class User
@@ -6,5 +8,11 @@ namespace IttFelTeheted.API.Models
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public string EMail { get; set; }
+        public string Gender { get; set; }
+        public int Age { get; set; }
+        public string Introduction { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public DateTime LastActive { get; set; }
     }
 }

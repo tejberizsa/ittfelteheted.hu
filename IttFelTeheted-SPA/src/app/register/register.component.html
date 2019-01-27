@@ -1,18 +1,25 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
-    <h2 class="text-center text-primary">Regisztráció</h2>
-    <hr>
-  
-    <div class="form-group">
-      <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Felhasználó vagy e-mail">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <form #registerForm="ngForm" (ngSubmit)="register()">
+          <h2 class="text-center text-primary">Regisztráció</h2>
+          <hr>
+        
+          <div class="form-group">
+            <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Felhasználó vagy e-mail">
+          </div>
+        
+          <div class="form-group">
+            <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Jelszó">
+          </div>
+        
+          <div class="form-group text-center">
+            <button class="btn btn-success mr-2" type="submit">Register</button>
+            <button class="btn btn-default" type="button" [routerLink]="['/home']">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
     </div>
-  
-    <div class="form-group">
-      <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Jelszó">
-    </div>
-  
-    <div class="form-group text-center">
-      <button class="btn btn-success mr-2" type="submit">Register</button>
-      <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
-    </div>
-    
-  </form>
+
+</div>
