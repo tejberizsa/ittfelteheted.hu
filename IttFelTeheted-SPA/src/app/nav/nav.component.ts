@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-nav',
@@ -14,9 +13,7 @@ export class NavComponent implements OnInit {
 
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   login() {
     this.authService.login(this.model).subscribe(next => {

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
@@ -34,6 +34,7 @@ import { RegisterGuard } from './_guards/register.guard';
    imports: [
       BrowserModule,
       HttpClientModule,
+      ReactiveFormsModule,
       FormsModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes)
