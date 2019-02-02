@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using IttFelTeheted.API.Data;
 using IttFelTeheted.API.Dtos;
+using IttFelTeheted.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IttFelTeheted.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -26,7 +29,7 @@ namespace IttFelTeheted.API.Controllers
         {
             var users = await _repo.GetUsers();
 
-            var usersToReturn = _mapper.Map<UserForListDto>(users);
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
             return Ok(usersToReturn);
         }

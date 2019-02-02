@@ -11,5 +11,8 @@ namespace IttFelTeheted.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
+         Task<IEnumerable<Post>> GetPosts();
+         Task<Post> GetPostByID(int Id);
+         Task<Topic> GetTopic(int Id);
     }
 }

@@ -19,6 +19,8 @@ import { AnswerComponent } from './question/answer/answer.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterGuard } from './_guards/register.guard';
+import { PostService } from './_services/post.service';
+import { QuestionCardComponent } from './question/question-card/question-card.component';
 
 @NgModule({
    declarations: [
@@ -29,7 +31,8 @@ import { RegisterGuard } from './_guards/register.guard';
       ListsComponent,
       MessagesComponent,
       QuestionDetailComponent,
-      AnswerComponent
+      AnswerComponent,
+      QuestionCardComponent
    ],
    imports: [
       BrowserModule,
@@ -44,7 +47,8 @@ import { RegisterGuard } from './_guards/register.guard';
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      RegisterGuard
+      RegisterGuard,
+      PostService
    ],
    bootstrap: [
       AppComponent

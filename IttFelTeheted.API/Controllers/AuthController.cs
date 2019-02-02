@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using IttFelTeheted.API.Data;
 using IttFelTeheted.API.Dtos;
+using IttFelTeheted.API.Helpers;
 using IttFelTeheted.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Models;
@@ -9,14 +10,23 @@ namespace IttFelTeheted.API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<UserForRegisterDto, User>();
-            CreateMap<User, UserForListDto>();
-            CreateMap<User, UserForDetailedDto>();
+            CreateMap<User, UserForListDto>().ReverseMap();
 
+            CreateMap<AnswerForAddDto, Answer>();
+            CreateMap<Answer, AnswerForDetailedDto>()
+                .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.User.Id))
+                .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username));
 
-            // CreateMap<User, UserForDetailedDto>()
-            //     .ForMember(dest => dest.PhotoUrl, opt => {
-            //         opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
-            //     });
+            CreateMap<PostForDetailedDto, Post>();
+            CreateMap<PostForAddDto, Post>();
+            CreateMap<Post, PostForDetailedDto>()
+                .ForMember(d => d.Answers, opt => opt.MapFrom(s => s.Answers))
+                .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.User.Id))
+                .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.User.Username));
+            CreateMap<Post, PostForListDto>()
+                .ForMember(d => d.Answer, opt => opt.MapFrom(s => s.Answers.OrderByDescending(a => a.Like).FirstOrDefault()))
+                .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.User.Id))
+                .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username));
         }
     }
 }
