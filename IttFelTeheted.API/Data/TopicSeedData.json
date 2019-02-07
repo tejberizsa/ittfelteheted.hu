@@ -1,92 +1,122 @@
 [
     {
-        "TopicName": "Ajándék"
+        "TopicName": "Ajándék",
+        "Icon": "fa fa-gift"
     },
     {
-        "TopicName": "Állatok"
+        "TopicName": "Állatok",
+        "Icon": "fa fa-paw"
     },
     {
-        "TopicName": "Design"
+        "TopicName": "Design",
+        "Icon": "fa fa-crop"
     },
     {
-        "TopicName": "Divat"
+        "TopicName": "Divat",
+        "Icon": "fa fa-pied-piper"
     },
     {
-        "TopicName": "Család"
+        "TopicName": "Család",
+        "Icon": "fa fa-heart"
     },
     {
-        "TopicName": "Egészség"
+        "TopicName": "Egészség",
+        "Icon": "fa fa-heartbeat"
     },
     {
-        "TopicName": "Építészet"
+        "TopicName": "Építészet",
+        "Icon": "fa fa-building-o"
     },
     {
-        "TopicName": "Események"
+        "TopicName": "Események",
+        "Icon": "fa fa-calendar-check-o"
     },
     {
-        "TopicName": "Ételek és italok"
+        "TopicName": "Ételek és italok",
+        "Icon": "fa fa-coffee"
     },
     {
-        "TopicName": "Gyerekek"
+        "TopicName": "Gyerekek",
+        "Icon": "fa fa-child"
     },
     {
-        "TopicName": "Hírességek"
+        "TopicName": "Hírességek",
+        "Icon": "fa fa-star"
     },
     {
-        "TopicName": "Járművek"
+        "TopicName": "Járművek",
+        "Icon": "fa fa-car"
     },
     {
-        "TopicName": "Kertészet"
+        "TopicName": "Kertészet",
+        "Icon": "fa fa-tree"
     },
     {
-        "TopicName": "Kultúra, közösség"
+        "TopicName": "Kultúra, közösség",
+        "Icon": "fa fa-book"
     },
     {
-        "TopicName": "Otthon"
+        "TopicName": "Otthon",
+        "Icon": "fa fa-houzz"
     },
     {
-        "TopicName": "Geek"
+        "TopicName": "Geek",
+        "Icon": "fa fa-laptop"
     },
     {
-        "TopicName": "Művészet"
+        "TopicName": "Művészet",
+        "Icon": "fa fa-weixin"
     },
     {
-        "TopicName": "Oktatás"
+        "TopicName": "Oktatás",
+        "Icon": "fa fa-graduation-cap"
     },
     {
-        "TopicName": "Politika"
+        "TopicName": "Politika",
+        "Icon": "fa fa-users"
     },
     {
-        "TopicName": "Sport és fitness"
+        "TopicName": "Sport és fitness",
+        "Icon": "fa fa-bicycle"
     },
     {
-        "TopicName": "Szépségápolás"
+        "TopicName": "Szépségápolás",
+        "Icon": "fa fa-flask"
     },
     {
-        "TopicName": "Szerelem"
+        "TopicName": "Szerelem",
+        "Icon": "fa fa-heart"
     },
     {
-        "TopicName": "Szórakozás"
+        "TopicName": "Szórakozás",
+        "Icon": "fa fa-smile-o"
     },
     {
-        "TopicName": "Technológia"
+        "TopicName": "Technológia",
+        "Icon": "fa fa-microchip"
     },
     {
-        "TopicName": "Termékek"
+        "TopicName": "Termékek",
+        "Icon": "fa fa-product-hunt"
     },
     {
-        "TopicName": "Történelem"
+        "TopicName": "Történelem",
+        "Icon": "fa fa-history"
     },
     {
-        "TopicName": "Tudomány"
+        "TopicName": "Tudomány",
+        "Icon": "fa fa-flask"
     },
     {
-        "TopicName": "Utazás"
+        "TopicName": "Utazás",
+        "Icon": "fa fa-plane"
     },
     {
-        "TopicName": "Üzlet"
+        "TopicName": "Üzlet",
+        "Icon": "fa fa-money"
     },
     {
-        "TopicName": "Egyéb"
+        "TopicName": "Egyéb",
+        "Icon": "fa fa-random"
     }
 ]

@@ -1,21 +1,29 @@
 
 
 
-<div class="container mt-5">
-
-    <div class="input-group justify-content-center">
-        <input type="text" class="form-control" placeholder="Keresés">
-        <div class="input-group-append">
-          <button class="btn btn-secondary" type="button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-      <br/>
+<div class="row wrapper">
+  <div class="col-2 sidebar">
+    <div *ngFor="let topic of topics" class="btn-group-vertical" data-toggle="buttons">
+      <button type="button" class="btn btn-outline-light border-light text-primary text-left"><i [ngClass]="getTopicIcon(topic.icon)"></i>{{topic.topicName}}</button>
+    </div>
+  </div>
+<div class="row col-10 content">
+    <div class="container mt-5">
+        <div class="input-group justify-content-center">
+            <input type="text" class="form-control" placeholder="Keresés">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <br/>
+    </div>
+    <br/>
+    <div class="row">
+    <div *ngFor="let post of posts" class="mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
+        <app-question-card [post]="post"></app-question-card>
+    </div>
+  </div>
 </div>
-<br/>
-      <div class="row mr-20 ml-20">
-        <div *ngFor="let post of posts" class="mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
-          <app-question-card [post]="post"></app-question-card>
-        </div>
-      </div>
+</div>

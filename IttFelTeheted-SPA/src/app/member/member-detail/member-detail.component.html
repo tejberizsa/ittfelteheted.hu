@@ -1,0 +1,49 @@
+<!-- <div routerLink="['/members/', user.id]">aktiválás</div> -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <h4 class="mt-4 ml-4">{{user.username}}</h4>
+        <img src="{{user.photoUrl}}" alt="{{user.knownAs}}" class="card-img-top img-thumbnail">
+        <div class="card-body">
+          <div>
+            <strong>Kor:</strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong>Utoljára bejelentkezett:</strong>
+            <p>{{user.lastActive}}</p>
+          </div>
+          <div>
+            <strong>Regisztráció időpontja:</strong>
+            <p>{{user.registrationDate}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Követem</button>
+            <button class="btn btn-success w-100">Üzenet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Posztok">
+            <h4>Posztok és kérdések</h4>
+            <p>itt posztok lesznek</p>
+          </tab>
+          <tab heading="Névjegy">
+            <h4>Névjegy</h4>
+            <p>{{user.introduction}}</p>
+          </tab>
+          <tab heading="Üzenetek">
+            <p>itt üzenetek lesznek</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

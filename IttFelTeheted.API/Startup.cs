@@ -85,7 +85,7 @@ namespace IttFelTeheted.API
             }
 
             // app.UseHttpsRedirection();
-            //seeder.SeedUser();
+            // seeder.SeedUser();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();

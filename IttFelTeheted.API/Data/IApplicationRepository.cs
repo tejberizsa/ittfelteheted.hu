@@ -13,6 +13,7 @@ namespace IttFelTeheted.API.Data
          Task<User> GetUser(int id);
          Task<IEnumerable<Post>> GetPosts();
          Task<Post> GetPostByID(int Id);
+         Task<IEnumerable<Topic>> GetTopics();
          Task<Topic> GetTopic(int Id);
     }
 }

@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CollapseModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -21,6 +22,15 @@ import { AuthGuard } from './_guards/auth.guard';
 import { RegisterGuard } from './_guards/register.guard';
 import { PostService } from './_services/post.service';
 import { QuestionCardComponent } from './question/question-card/question-card.component';
+import { MemberDetailComponent } from './member/member-detail/member-detail.component';
+import { UserService } from './_services/user.service';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { PostListResolver } from './_resolvers/post-list.resolver';
+import { TopicListResolver } from './_resolvers/topic-list.resolver';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -32,15 +42,24 @@ import { QuestionCardComponent } from './question/question-card/question-card.co
       MessagesComponent,
       QuestionDetailComponent,
       AnswerComponent,
-      QuestionCardComponent
+      QuestionCardComponent,
+      MemberDetailComponent
    ],
    imports: [
-      BrowserModule,
+      [ BrowserModule, CollapseModule.forRoot()],
       HttpClientModule,
       ReactiveFormsModule,
       FormsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      TabsModule.forRoot(),
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      })
    ],
    providers: [
       AuthService,
@@ -48,7 +67,11 @@ import { QuestionCardComponent } from './question/question-card/question-card.co
       AlertifyService,
       AuthGuard,
       RegisterGuard,
-      PostService
+      PostService,
+      UserService,
+      MemberDetailResolver,
+      PostListResolver,
+      TopicListResolver
    ],
    bootstrap: [
       AppComponent

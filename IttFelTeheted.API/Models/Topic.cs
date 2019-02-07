@@ -4,5 +4,6 @@ namespace IttFelTeheted.API.Models
     {
         public int Id { get; set; }
         public string TopicName { get; set; }
+        public string Icon { get; set; }
     }
 }

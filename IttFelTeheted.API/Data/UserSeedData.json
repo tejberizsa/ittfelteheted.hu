@@ -1,6 +1,6 @@
 [
     {
-      "Username": "Marie",
+      "Username": "Norbi",
       "Password": "password",
       "Email": "email@email.com",
       "Gender": "female",
@@ -8,9 +8,7 @@
       "Created": "2017-07-21",
       "LastActive": "2017-07-21",
       "Introduction": "Esse nisi ut velit nostrud eu nulla aliquip do esse. Qui nostrud amet eiusmod minim sit sint labore laborum est laboris deserunt et cillum. Dolor non veniam ea labore. Nostrud laborum voluptate adipisicing commodo excepteur. Veniam proident esse dolore sit adipisicing voluptate duis. Magna do elit nulla deserunt veniam non. Cupidatat nulla sunt amet consequat dolore proident enim consectetur eiusmod pariatur aliquip reprehenderit.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/52.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/52.jpg"
     },
     {
       "Username": "Lacey",
@@ -21,9 +19,7 @@
       "Created": "2017-02-10",
       "LastActive": "2017-02-10",
       "Introduction": "Laborum aliqua Lorem ipsum ad Lorem ex consectetur enim deserunt ea exercitation veniam. Laboris velit incididunt nostrud ipsum nostrud proident officia laborum sit aliqua. Magna Lorem eiusmod ut mollit ad in ex Lorem est. Et voluptate ad ea magna. Magna minim amet dolor eu nulla ad deserunt. Eu adipisicing ea ipsum anim ullamco eiusmod anim ea laboris est ut. Proident officia ad aute sunt dolor adipisicing.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/69.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/9.jpg"
     },
     {
       "Username": "Hilda",
@@ -34,9 +30,7 @@
       "Created": "2017-01-17",
       "LastActive": "2017-01-17",
       "Introduction": "Irure minim nisi labore aliqua deserunt. Pariatur mollit quis excepteur amet. Nostrud ut deserunt veniam officia cillum id elit incididunt. Proident nulla nulla laboris ex laboris amet. Reprehenderit nulla labore esse et esse aute do.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/23.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/23.jpg"
     },
     {
       "Username": "Patty",
@@ -47,9 +41,7 @@
       "Created": "2018-07-15",
       "LastActive": "2018-07-15",
       "Introduction": "Sit anim consequat fugiat dolor ut. Excepteur ullamco do aliquip ea minim nisi non cillum exercitation fugiat. Excepteur ad deserunt cillum ad aute nisi eu eu sunt ad esse consectetur. Id in sit excepteur quis aliqua duis et occaecat. Et nostrud ipsum amet magna enim eiusmod esse commodo occaecat aliqua nulla proident. Dolor pariatur culpa laboris officia tempor ut in adipisicing elit velit commodo exercitation. Anim consectetur nostrud est reprehenderit.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/45.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/45.jpg"
     },
     {
       "Username": "Marisol",
@@ -60,9 +52,7 @@
       "Created": "2017-08-13",
       "LastActive": "2017-08-13",
       "Introduction": "Commodo minim quis officia velit officia exercitation ut sunt et. Ipsum velit laboris excepteur esse id non mollit dolor ea consectetur duis. Ullamco consectetur aliquip pariatur commodo.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/39.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/39.jpg"
     },
     {
       "Username": "Meghan",
@@ -73,9 +63,7 @@
       "Created": "2017-11-24",
       "LastActive": "2017-11-24",
       "Introduction": "Aliqua pariatur tempor occaecat enim dolore. Reprehenderit sint officia minim ipsum nulla id elit ullamco mollit reprehenderit adipisicing. Cupidatat irure in nisi nostrud proident ipsum. Duis tempor veniam in aliquip pariatur non ex. Ullamco officia anim ipsum velit sunt voluptate aute.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/61.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/61.jpg"
     },
     {
       "Username": "Henrietta",
@@ -86,9 +74,7 @@
       "Created": "2017-05-10",
       "LastActive": "2017-05-10",
       "Introduction": "Ipsum incididunt duis velit ad officia adipisicing ea id laborum id cillum ad culpa. Commodo velit voluptate eiusmod ullamco aliqua laboris adipisicing. Officia et laborum reprehenderit labore laboris consectetur fugiat. Nulla magna veniam nisi fugiat officia sint laboris nisi ut duis ullamco duis enim. Culpa sint dolor sit est est occaecat excepteur officia adipisicing do magna voluptate consequat. Eu amet excepteur deserunt Lorem velit commodo officia exercitation. Eiusmod nostrud non sint incididunt.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/8.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/18.jpg"
     },
     {
       "Username": "Carmen",
@@ -99,9 +85,7 @@
       "Created": "2018-12-03",
       "LastActive": "2018-12-03",
       "Introduction": "Elit enim incididunt ut eiusmod minim sit irure ullamco fugiat consequat. Eiusmod magna magna sit pariatur officia laborum. Irure occaecat id nisi eiusmod ex dolore veniam duis exercitation. Ad sunt nostrud magna culpa do ad voluptate deserunt veniam elit ea eiusmod ea. Adipisicing Lorem elit excepteur ea enim sunt ullamco ea id culpa consequat fugiat sunt.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/8.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/28.jpg"
     },
     {
       "Username": "Bonnie",
@@ -112,9 +96,7 @@
       "Created": "2018-02-20",
       "LastActive": "2018-02-20",
       "Introduction": "Cupidatat non ex ex id est elit exercitation dolor. Esse sit occaecat consectetur dolore in ex. Id dolore ex non in aute culpa minim velit proident in proident.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/35.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/35.jpg"
     },
     {
       "Username": "Janelle",
@@ -125,9 +107,7 @@
       "Created": "2018-10-14",
       "LastActive": "2018-10-14",
       "Introduction": "Aliquip non amet labore velit adipisicing eiusmod minim culpa. Nostrud ex occaecat laborum consectetur adipisicing enim et sit ut est nulla fugiat. Sint et commodo ad pariatur quis nostrud anim dolore qui fugiat non incididunt.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/16.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/6.jpg"
     },
     {
       "Username": "Mariana",
@@ -138,9 +118,7 @@
       "Created": "2017-10-08",
       "LastActive": "2017-10-08",
       "Introduction": "In reprehenderit enim adipisicing pariatur voluptate voluptate eiusmod tempor magna laboris reprehenderit. Mollit in tempor fugiat labore laborum. Consectetur veniam id non ad est nulla excepteur fugiat ullamco velit. Sit et id nisi esse. Excepteur irure quis dolor officia sint. Ex id ullamco qui quis proident. Sint exercitation voluptate et esse magna ea ut velit commodo ullamco consectetur.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/8.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/8.jpg"
     },
     {
       "Username": "Marietta",
@@ -151,9 +129,7 @@
       "Created": "2018-02-27",
       "LastActive": "2018-02-27",
       "Introduction": "Ut dolor amet enim aute cupidatat est eiusmod incididunt ex id Lorem culpa. Magna velit sint consectetur voluptate voluptate magna. Tempor commodo fugiat nulla ut ad pariatur anim.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/11.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/11.jpg"
     },
     {
       "Username": "Fran",
@@ -164,9 +140,7 @@
       "Created": "2018-09-27",
       "LastActive": "2018-09-27",
       "Introduction": "Culpa ipsum reprehenderit qui pariatur anim voluptate laborum in qui magna deserunt. Labore eiusmod reprehenderit adipisicing duis veniam consectetur magna ut in ipsum nisi excepteur. Culpa irure reprehenderit tempor non duis. Non culpa fugiat aute laboris nostrud id aliquip labore adipisicing pariatur ut. Incididunt ad minim officia ullamco id eiusmod ullamco elit pariatur. Quis in magna excepteur magna ipsum amet excepteur do culpa sunt cillum aute sit qui. Ullamco laboris sit ea culpa et id duis consequat enim nisi dolor commodo.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/83.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/83.jpg"
     },
     {
       "Username": "Helene",
@@ -177,9 +151,7 @@
       "Created": "2017-07-11",
       "LastActive": "2017-07-11",
       "Introduction": "Consequat consequat proident exercitation labore est aute reprehenderit. Esse voluptate do in in ipsum pariatur ipsum ea est et aliqua laboris. Dolore nisi culpa magna quis cupidatat incididunt cupidatat dolor sunt aute anim.\r\n",
-      "Photos": {
-        "url": "https://randomuser.me/api/portraits/women/2.jpg"
-      }
+      "PhotoUrl": "https://randomuser.me/api/portraits/women/12.jpg"
     },
         {
           "Username": "Campbell",
@@ -190,9 +162,7 @@
           "Created": "2017-01-19",
           "LastActive": "2017-01-19",
           "Introduction": "Nostrud adipisicing in non labore tempor dolor tempor tempor sit labore ad culpa. Anim excepteur et elit ex incididunt veniam dolor culpa exercitation laboris sint exercitation tempor enim. Labore fugiat culpa dolore dolor sint aliquip labore nostrud sunt sint laboris est.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/72.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/72.jpg"
         },
         {
           "Username": "Santos",
@@ -203,9 +173,7 @@
           "Created": "2018-01-30",
           "LastActive": "2018-01-30",
           "Introduction": "Amet esse laboris do reprehenderit cupidatat nisi aliqua Lorem eiusmod elit irure qui. Proident anim pariatur elit id. In excepteur ipsum minim pariatur deserunt anim cupidatat ea excepteur et consequat culpa nisi ex. Tempor laborum adipisicing culpa occaecat. Ullamco sunt ad cupidatat minim incididunt est excepteur.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/21.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/21.jpg"
         },
         {
           "Username": "Cain",
@@ -216,9 +184,7 @@
           "Created": "2018-06-11",
           "LastActive": "2018-06-11",
           "Introduction": "Fugiat do veniam laboris esse tempor ut qui proident. Sunt labore commodo enim tempor ea exercitation veniam est deserunt exercitation ullamco ut non. Sit do excepteur minim quis officia do consectetur deserunt fugiat exercitation sunt est fugiat. Sint officia commodo non culpa cupidatat proident sunt ex ex ullamco non aliquip esse. Minim excepteur sunt eu elit adipisicing nulla adipisicing eu cupidatat cupidatat consequat. Est exercitation reprehenderit enim est enim laborum voluptate cupidatat elit officia anim est in ut. In amet occaecat est aliqua veniam non culpa non deserunt consequat ex pariatur.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/70.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/70.jpg"
         },
         {
           "Username": "Gay",
@@ -229,9 +195,7 @@
           "Created": "2017-07-25",
           "LastActive": "2017-07-25",
           "Introduction": "Sunt aute consectetur culpa proident quis pariatur ullamco nisi. Voluptate mollit voluptate amet ipsum fugiat pariatur nulla consequat amet esse do. Dolore cupidatat qui quis irure ullamco mollit exercitation aliquip sit dolore consectetur.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/68.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/68.jpg"
         },
         {
           "Username": "Mason",
@@ -242,9 +206,7 @@
           "Created": "2018-04-08",
           "LastActive": "2018-04-08",
           "Introduction": "Fugiat eu esse culpa quis ad. Lorem ea eiusmod labore veniam adipisicing. Amet ullamco minim aliqua labore reprehenderit cupidatat cupidatat sit ipsum. Deserunt eu eiusmod do consequat. Pariatur irure ipsum dolore minim laborum labore sunt id dolor quis. Occaecat veniam non in Lorem adipisicing ut sunt incididunt.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/82.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/82.jpg"
         },
         {
           "Username": "Johns",
@@ -255,9 +217,7 @@
           "Created": "2018-10-06",
           "LastActive": "2018-10-06",
           "Introduction": "Ad occaecat veniam magna nisi reprehenderit. Sint velit consequat quis consequat non cillum anim excepteur ex cillum veniam adipisicing cupidatat. Et cupidatat exercitation nisi consectetur aliqua in magna do ad. Ad consectetur eu labore in officia Lorem ea eu do proident. Anim aliqua fugiat labore sit velit sunt ex esse cillum laboris excepteur dolore. Amet aliquip cupidatat culpa reprehenderit reprehenderit ipsum sit tempor ipsum. Quis nulla deserunt aliqua ea id ad cillum.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/49.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/49.jpg"
         },
         {
           "Username": "Atkinson",
@@ -268,8 +228,6 @@
           "Created": "2018-10-03",
           "LastActive": "2018-10-03",
           "Introduction": "Id excepteur ut pariatur aliquip in excepteur velit sit ex sint irure consectetur amet nostrud. Adipisicing consectetur labore tempor consequat nulla enim culpa officia excepteur ipsum et officia reprehenderit. Irure elit magna ipsum dolore cupidatat Lorem sunt non laboris. Non laboris exercitation adipisicing labore eu enim commodo pariatur consectetur ullamco cillum reprehenderit adipisicing Lorem. Sunt enim veniam ipsum fugiat culpa ex enim cupidatat. Consequat magna consectetur sit reprehenderit et aliqua eiusmod culpa Lorem magna.\r\n",
-          "Photos": {
-            "url": "https://randomuser.me/api/portraits/men/37.jpg"
-          }
+          "PhotoUrl": "https://randomuser.me/api/portraits/men/37.jpg"
         }
   ]

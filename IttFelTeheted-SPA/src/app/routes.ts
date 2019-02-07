@@ -6,9 +6,13 @@ import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { RegisterGuard } from './_guards/register.guard';
+import { MemberDetailComponent } from './member/member-detail/member-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { PostListResolver } from './_resolvers/post-list.resolver';
+import { TopicListResolver } from './_resolvers/topic-list.resolver';
 
 export const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent, resolve: {posts: PostListResolver, topics: TopicListResolver} },
     { path: 'detail', component: QuestionDetailComponent },
     { path: 'lists', component: ListsComponent },
     { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
@@ -17,7 +21,8 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            { path: 'messages', component: MessagesComponent}
+            { path: 'messages', component: MessagesComponent },
+            { path: 'member/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}

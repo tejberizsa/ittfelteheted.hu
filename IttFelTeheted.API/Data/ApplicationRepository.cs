@@ -47,6 +47,12 @@ namespace IttFelTeheted.API.Data
             return topic;
         }
 
+        public async Task<IEnumerable<Topic>> GetTopics()
+        {
+            var topics = await _context.Topics.OrderBy(t => t.TopicName).ToListAsync();
+            return topics;
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);

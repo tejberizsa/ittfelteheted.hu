@@ -28,7 +28,7 @@ login(model: any) {
 }
 
 register(user: any) {
-  return this.http.post(this.baseUrl + 'register', user);
+  return this.http.post(this.baseUrl + 'auth/register', user);
 }
 
 loggedIn() {
