@@ -12,7 +12,7 @@ namespace IttFelTeheted.API.Models
         public virtual Topic Topic { get; set; }
         public DateTime DateAdded { get; set; }
         public int Views { get; set; }
-        public string PhotoUrl { get; set; }
+        public ICollection<PostedPhoto> Photos { get; set; }
         public ICollection<Answer> Answers { get; set; }
 
     }

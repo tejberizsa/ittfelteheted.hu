@@ -10,7 +10,10 @@ namespace IttFelTeheted.API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<UserForRegisterDto, User>();
-            CreateMap<User, UserForListDto>().ReverseMap();
+            CreateMap<User, UserForListDto>()
+                .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
+            CreateMap<User, UserForDetailedDto>()
+                .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
 
             CreateMap<AnswerForAddDto, Answer>();
             CreateMap<Answer, AnswerForDetailedDto>()
@@ -26,7 +29,8 @@ namespace IttFelTeheted.API.Helpers
             CreateMap<Post, PostForListDto>()
                 .ForMember(d => d.Answer, opt => opt.MapFrom(s => s.Answers.OrderByDescending(a => a.Like).FirstOrDefault()))
                 .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.User.Id))
-                .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username));
+                .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username))
+                .ForMember(d => d.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
         }
     }
 }

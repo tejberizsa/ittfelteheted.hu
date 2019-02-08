@@ -1,5 +1,6 @@
 import { Topic } from './topic';
 import { Answer } from './answer';
+import { Photo } from './photo';
 
 export interface Post {
     id: number;
@@ -12,4 +13,5 @@ export interface Post {
     userName?: string;
     photoUrl?: string;
     answers?: Answer[];
+    photos?: Photo[];
 }

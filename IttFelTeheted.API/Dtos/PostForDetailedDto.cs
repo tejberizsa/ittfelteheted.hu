@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DatingApp.API.Dtos;
 using IttFelTeheted.API.Models;
 
 namespace IttFelTeheted.API.Dtos
@@ -16,5 +17,6 @@ namespace IttFelTeheted.API.Dtos
         public int Views { get; set; }
         public string PhotoUrl { get; set; }
         public ICollection<AnswerForDetailedDto> Answers { get; set; }
+        public ICollection<PhotosForDetailedDto> Photos { get; set; }
     }
 }

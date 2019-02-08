@@ -39,6 +39,9 @@
             <h4>Névjegy</h4>
             <p>{{user.introduction}}</p>
           </tab>
+          <tab heading="Galéria">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </tab>
           <tab heading="Üzenetek">
             <p>itt üzenetek lesznek</p>
           </tab>

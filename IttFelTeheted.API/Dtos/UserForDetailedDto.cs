@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using DatingApp.API.Dtos;
 
 namespace IttFelTeheted.API.Dtos
 {
@@ -12,5 +14,6 @@ namespace IttFelTeheted.API.Dtos
         public string PhotoUrl { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime LastActive { get; set; }
+        public ICollection<PhotosForDetailedDto> Photos { get; set; }
     }
 }

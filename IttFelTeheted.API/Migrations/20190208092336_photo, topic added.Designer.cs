@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IttFelTeheted.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190205212239_topic icon added")]
-    partial class topiciconadded
+    [Migration("20190208092336_photo, topic added")]
+    partial class phototopicadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,8 +51,6 @@ namespace IttFelTeheted.API.Migrations
 
                     b.Property<DateTime>("DateAdded");
 
-                    b.Property<string>("PhotoUrl");
-
                     b.Property<string>("PostBody");
 
                     b.Property<string>("Title");
@@ -70,6 +68,26 @@ namespace IttFelTeheted.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("IttFelTeheted.API.Models.PostedPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<bool>("IsMain");
+
+                    b.Property<int>("PostId");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostedPhotos");
                 });
 
             modelBuilder.Entity("IttFelTeheted.API.Models.Topic", b =>
@@ -105,8 +123,6 @@ namespace IttFelTeheted.API.Migrations
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("PhotoUrl");
-
                     b.Property<DateTime>("RegistrationDate");
 
                     b.Property<string>("Username");
@@ -114,6 +130,26 @@ namespace IttFelTeheted.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("IttFelTeheted.API.Models.UserPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<bool>("IsMain");
+
+                    b.Property<string>("Url");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("UserPhotos");
                 });
 
             modelBuilder.Entity("IttFelTeheted.API.Models.Answer", b =>
@@ -137,6 +173,22 @@ namespace IttFelTeheted.API.Migrations
                     b.HasOne("IttFelTeheted.API.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("IttFelTeheted.API.Models.PostedPhoto", b =>
+                {
+                    b.HasOne("IttFelTeheted.API.Models.Post", "Post")
+                        .WithMany("Photos")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("IttFelTeheted.API.Models.UserPhoto", b =>
+                {
+                    b.HasOne("IttFelTeheted.API.Models.User", "User")
+                        .WithMany("Photos")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
