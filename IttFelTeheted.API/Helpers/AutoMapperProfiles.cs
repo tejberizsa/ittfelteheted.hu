@@ -14,6 +14,7 @@ namespace IttFelTeheted.API.Helpers
                 .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
+            CreateMap<UserForUpdateDto, User>();
 
             CreateMap<AnswerForAddDto, Answer>();
             CreateMap<Answer, AnswerForDetailedDto>()

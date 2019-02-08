@@ -13,7 +13,7 @@ export class TopicListResolver implements Resolve<Topic[]> {
     resolve(route: ActivatedRouteSnapshot): Observable<Topic[]> {
         return this.postService.getTopics().pipe(
             catchError(error => {
-                this.alertify.error('Problem retrieving data');
+                this.alertify.error('Probléma történt az adatok betöltése közben');
                 this.router.navigate(['/home']);
                 return of(null);
             })

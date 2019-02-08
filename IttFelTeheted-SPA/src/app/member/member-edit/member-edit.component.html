@@ -1,8 +1,11 @@
-<!-- <div routerLink="['/members/', user.id]">aktiválás</div> -->
-
 <div class="container mt-4">
   <div class="row">
-      <h3 class="ml-4">{{user.username | titlecase}}</h3>
+    <h3 class="col-4">Profilod</h3>
+  <div class="col-8">
+    <div *ngIf="editForm.dirty" class="alert alert-info">
+      <strong>Fontos, </strong>módosítottad a bemutatkozást, mentsd el, ha meg akarod tartani.
+    </div>
+  </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
@@ -23,29 +26,21 @@
           </div>
         </div>
         <div class="card-footer">
-          <div class="btn-group d-flex">
-            <button class="btn btn-primary w-100">Követem</button>
-            <button class="btn btn-success w-100">Üzenet</button>
-          </div>
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Mentés</button>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset">
-          <tab heading="Posztok">
-            <h4>Posztok és kérdések</h4>
-            <p>itt posztok lesznek</p>
+          <tab heading="Névjegyed módosítása">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                <h4>Névjegy</h4>
+                <textarea name="introduction" class="form-control" rows="12" [(ngModel)]="user.introduction"></textarea>
+            </form>
           </tab>
-          <tab heading="Névjegy">
-            <h4>Névjegy</h4>
-            <p>{{user.introduction}}</p>
-          </tab>
-          <tab heading="Galéria">
-            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-          </tab>
-          <tab heading="Üzenetek">
-            <p>itt üzenetek lesznek</p>
+          <tab heading="Profilképeid">
+            <p>Photo edit will go here</p>
           </tab>
         </tabset>
       </div>

@@ -13,7 +13,7 @@ export class PostListResolver implements Resolve<Post[]> {
     resolve(route: ActivatedRouteSnapshot): Observable<Post[]> {
         return this.postService.getPosts().pipe(
             catchError(error => {
-                this.alertify.error('Problem retrieving data');
+                this.alertify.error('Probléma történt az adatok betöltése közben');
                 this.router.navigate(['/home']);
                 return of(null);
             })

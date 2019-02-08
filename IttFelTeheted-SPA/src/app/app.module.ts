@@ -28,6 +28,8 @@ import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { PostListResolver } from './_resolvers/post-list.resolver';
 import { TopicListResolver } from './_resolvers/topic-list.resolver';
+import { MemberEditComponent } from './member/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -44,7 +46,8 @@ export function tokenGetter() {
       QuestionDetailComponent,
       AnswerComponent,
       QuestionCardComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      MemberEditComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],
@@ -73,7 +76,8 @@ export function tokenGetter() {
       UserService,
       MemberDetailResolver,
       PostListResolver,
-      TopicListResolver
+      TopicListResolver,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent

@@ -10,6 +10,8 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { PostListResolver } from './_resolvers/post-list.resolver';
 import { TopicListResolver } from './_resolvers/topic-list.resolver';
+import { MemberEditComponent } from './member/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent, resolve: {posts: PostListResolver, topics: TopicListResolver} },
@@ -22,7 +24,8 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'messages', component: MessagesComponent },
-            { path: 'member/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} }
+            { path: 'member/edit', component: MemberEditComponent, resolve: { user: MemberEditResolver } },
+            { path: 'member/:id', component: MemberDetailComponent, resolve: { user: MemberDetailResolver } }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}
