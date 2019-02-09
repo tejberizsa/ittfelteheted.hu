@@ -32,6 +32,13 @@ namespace IttFelTeheted.API.Helpers
                 .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.User.Id))
                 .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username))
                 .ForMember(d => d.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
+
+            CreateMap<MessageForCreationDto, Message>().ReverseMap();
+            CreateMap<Message, MessageToReturnDto>()
+                .ForMember(m => m.SenderPhotoUrl, opt => opt
+                    .MapFrom(u => u.Sender.Photos.FirstOrDefault(p => p.IsMain).Url))
+                .ForMember(m => m.RecipientPhotoUrl, opt => opt
+                    .MapFrom(u => u.Recipient.Photos.FirstOrDefault(p => p.IsMain).Url));
         }
     }
 }

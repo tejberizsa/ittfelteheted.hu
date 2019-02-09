@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IttFelTeheted.API.Helpers;
 using IttFelTeheted.API.Models;
 
 namespace IttFelTeheted.API.Data
@@ -15,5 +16,8 @@ namespace IttFelTeheted.API.Data
          Task<Post> GetPostByID(int Id);
          Task<IEnumerable<Topic>> GetTopics();
          Task<Topic> GetTopic(int Id);
+         Task<Message> GetMessage(int id);
+         Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
+         Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);
     }
 }
