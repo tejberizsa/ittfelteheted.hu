@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule, CollapseModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CollapseModule, TabsModule, PaginationModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } from 'ngx-timeago';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -30,10 +31,14 @@ import { PostListResolver } from './_resolvers/post-list.resolver';
 import { TopicListResolver } from './_resolvers/topic-list.resolver';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
 }
+export class MyIntl extends TimeagoIntl {
+   // do extra stuff here...
+   }
 
 @NgModule({
    declarations: [
@@ -58,6 +63,11 @@ export function tokenGetter() {
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      PaginationModule.forRoot(),
+      TimeagoModule.forRoot({
+         intl: { provide: TimeagoIntl, useClass: MyIntl },
+         formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+       }),
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,
@@ -77,7 +87,8 @@ export function tokenGetter() {
       MemberDetailResolver,
       PostListResolver,
       TopicListResolver,
-      MemberEditResolver
+      MemberEditResolver,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent

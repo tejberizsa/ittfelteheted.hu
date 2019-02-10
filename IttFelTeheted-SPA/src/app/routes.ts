@@ -12,6 +12,7 @@ import { PostListResolver } from './_resolvers/post-list.resolver';
 import { TopicListResolver } from './_resolvers/topic-list.resolver';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent, resolve: {posts: PostListResolver, topics: TopicListResolver} },
@@ -23,7 +24,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            { path: 'messages', component: MessagesComponent },
+            { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver } },
             { path: 'member/edit', component: MemberEditComponent, resolve: { user: MemberEditResolver } },
             { path: 'member/:id', component: MemberDetailComponent, resolve: { user: MemberDetailResolver } }
         ]
