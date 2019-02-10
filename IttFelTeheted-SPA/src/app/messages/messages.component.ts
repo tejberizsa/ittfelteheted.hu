@@ -26,9 +26,10 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  loadMessages() {
-    this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage
-      , this.pagination.itemsPerPage, this.messageContainer).subscribe((res: PaginatedResult<Message[]>) => {
+  loadMessages(cont: string) {
+    this.messageContainer = cont;
+    this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage,
+       this.pagination.itemsPerPage, this.messageContainer).subscribe((res: PaginatedResult<Message[]>) => {
         this.messages = res.result;
         this.pagination = res.pagination;
       }, error => {
@@ -36,8 +37,17 @@ export class MessagesComponent implements OnInit {
       });
   }
 
+  deleteMessage(id: number) {
+    this.userService.deleteMessage(id, this.authService.decodedToken.nameid).subscribe(() => {
+      this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
+      this.alertify.success('Üzenet törölve');
+    }, error => {
+      this.alertify.error('Nem sikerült törölni');
+    });
+  }
+
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
-    this.loadMessages();
+    this.loadMessages(this.messageContainer);
   }
 }

@@ -25,14 +25,14 @@
         <div class="card-footer">
           <div class="btn-group d-flex">
             <button class="btn btn-primary w-100">Követem</button>
-            <button class="btn btn-success w-100">Üzenet</button>
+            <button class="btn btn-success w-100" (click)="selectTab(4)">Üzenet</button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-        <tabset class="member-tabset">
+        <tabset class="member-tabset" #memberTabs>
           <tab heading="Posztok">
             <h4>Posztok és kérdések</h4>
             <p>itt posztok lesznek</p>
@@ -48,7 +48,7 @@
             <p>itt üzenetek lesznek</p>
           </tab>
           <tab heading="Üzenetek">
-            <p>itt üzenetek lesznek</p>
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
           </tab>
         </tabset>
       </div>

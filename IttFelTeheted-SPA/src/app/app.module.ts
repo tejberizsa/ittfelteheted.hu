@@ -32,6 +32,7 @@ import { TopicListResolver } from './_resolvers/topic-list.resolver';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './member/member-messages/member-messages.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -52,7 +53,8 @@ export class MyIntl extends TimeagoIntl {
       AnswerComponent,
       QuestionCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      MemberMessagesComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],
