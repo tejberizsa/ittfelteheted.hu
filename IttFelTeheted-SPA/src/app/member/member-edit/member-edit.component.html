@@ -40,7 +40,7 @@
             </form>
           </tab>
           <tab heading="Profilképeid">
-            <p>Photo edit will go here</p>
+            <app-member-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-member-photo-editor>
           </tab>
         </tabset>
       </div>

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } from 'ngx-timeago';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -33,6 +34,7 @@ import { MemberEditComponent } from './member/member-edit/member-edit.component'
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './member/member-messages/member-messages.component';
+import { MemberPhotoEditorComponent } from './member/member-photo-editor/member-photo-editor.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -54,7 +56,8 @@ export class MyIntl extends TimeagoIntl {
       QuestionCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      MemberMessagesComponent
+      MemberMessagesComponent,
+      MemberPhotoEditorComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],
@@ -65,6 +68,7 @@ export class MyIntl extends TimeagoIntl {
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      FileUploadModule,
       PaginationModule.forRoot(),
       TimeagoModule.forRoot({
          intl: { provide: TimeagoIntl, useClass: MyIntl },

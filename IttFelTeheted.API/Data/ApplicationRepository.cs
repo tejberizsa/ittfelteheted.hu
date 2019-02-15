@@ -112,5 +112,24 @@ namespace IttFelTeheted.API.Data
 
             return messages;
         }
+
+        public async Task<PostedPhoto> GetPostedPhoto(int id)
+        {
+            var postedPhoto = await _context.PostedPhotos.FirstOrDefaultAsync(p => p.Id == id);
+
+            return postedPhoto;
+        }
+
+        public async Task<UserPhoto> GetUserPhoto(int id)
+        {
+            var userPhoto = await _context.UserPhotos.FirstOrDefaultAsync(p => p.Id == id);
+
+            return userPhoto;
+        }
+
+        public async Task<UserPhoto> GetMainPhotoForUser(int userId)
+        {
+            return await _context.UserPhotos.Where(u => u.UserID == userId).FirstOrDefaultAsync(p => p.IsMain);
+        }
     }
 }
