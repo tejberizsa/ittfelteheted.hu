@@ -66,4 +66,13 @@ export class MemberPhotoEditorComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+
+  deletePhoto(id: number) {
+    this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
+      this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+      this.alertify.success('Kép törölve');
+    }, error => {
+      this.alertify.error('Nem sikerült a kép törlése');
+    });
+  }
 }

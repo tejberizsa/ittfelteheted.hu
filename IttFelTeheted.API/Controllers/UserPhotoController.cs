@@ -118,5 +118,34 @@ namespace IttFelTeheted.API.Controllers
 
             return BadRequest("Sikertelen, nem ez lett az elsődleges képed");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+
+            if(!user.Photos.Any(p => p.Id == id))
+                return Unauthorized();
+
+            var photoFromRepo = await _repo.GetUserPhoto(id);
+
+            if (photoFromRepo.IsMain)
+                return BadRequest("Ez az elsődleges profilképed");
+
+            var path = $"C:\\UserPhotos\\";
+            var extension = ".jpg";
+            var fileName = photoFromRepo.Url.Split("/").Last();
+            await Task.Run(() => System.IO.File.Delete(path + fileName + extension));
+
+            _repo.Delete(photoFromRepo);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Kép törlése nem sikerült");
+        }
     }
 }
