@@ -43,6 +43,16 @@ namespace IttFelTeheted.API.Controllers
             return Ok(postToReturn);
         }
 
+        [HttpGet("answer/{id}", Name = "GetAnswer")]
+        public async Task<IActionResult> GetAnswer(int id)
+        {
+            var answer = await _repo.GetAnswerByID(id);
+
+            var answerToReturn = _mapper.Map<AnswerForDetailedDto>(answer);
+
+            return Ok(answerToReturn);
+        }
+
         [HttpPost("AddPost")]
         public async Task<IActionResult> AddPost(PostForAddDto postForAddDto)
         {
@@ -69,8 +79,8 @@ namespace IttFelTeheted.API.Controllers
             throw new Exception("Poszt vagy kérdés mentése nem sikerült");
         }
 
-        [HttpPost("AddAnswer")]
-        public async Task<IActionResult> AddAnswer(AnswerForAddDto answerForAddDto)
+        [HttpPost("{postId}/AddAnswer")]
+        public async Task<IActionResult> AddAnswer(int postId, AnswerForAddDto answerForAddDto)
         {
             var userFromRepo = await _repo.GetUser(answerForAddDto.UserId);
 
@@ -84,15 +94,36 @@ namespace IttFelTeheted.API.Controllers
 
             answerToCreate.User = userFromRepo;
 
+            var postFromRepo = await _repo.GetPostByID(postId);
+            if (postFromRepo == null)
+                return BadRequest("Posz vagy válasz nem elérhető");
+
+            answerToCreate.Post = postFromRepo;
+
             _repo.Add(answerToCreate);
             
             if(await _repo.SaveAll()) {
-                var postCreated = await _repo.GetPostByID(answerToCreate.PostId);
-                var postToReturn = _mapper.Map<PostForDetailedDto>(postCreated);
-                return CreatedAtRoute("GetPost", new {id = postToReturn.Id}, postToReturn);
+                var answerCreated = await _repo.GetPostByID(answerToCreate.PostId);
+                var answerToReturn = _mapper.Map<AnswerForDetailedDto>(answerCreated);
+                return CreatedAtRoute("GetAnswer", new {id = answerToReturn.Id}, answerToReturn);
             }
 
             throw new Exception("Válasz mentése nem sikerül");
+        }
+
+        [HttpGet("trending/{id}")]
+        public async Task<IActionResult> GetTrendingPosts(int id)
+        {
+            var baseTopic = await _repo.GetTopic(id);
+
+            if (baseTopic == null)
+                return BadRequest("Poszt nem elérhető");
+
+            var trendingPosts = await _repo.GetTrendingPosts(id, baseTopic.Id);
+
+            var result = _mapper.Map<IEnumerable<PostForTrendingDto>>(trendingPosts);
+
+            return Ok(result);
         }
     }
 }

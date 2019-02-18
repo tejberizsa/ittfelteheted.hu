@@ -24,12 +24,22 @@ namespace IttFelTeheted.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Post> GetPostByID(int Id)
+        public async Task<Post> GetPostByID(int id)
         {
             var post = await _context.Posts
-                .Include(x => x.Topic)
-                .FirstOrDefaultAsync(x => x.Id == Id);
+                                    .Include(x => x.Topic)
+                                    .Include(x => x.User).ThenInclude(u => u.Photos)
+                                    .Include(x => x.Answers)
+                                    .Include(x => x.Photos)
+                                    .FirstOrDefaultAsync(x => x.Id == id);
             return post;
+        }
+
+        public async Task<Answer> GetAnswerByID(int id)
+        {
+            var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == id);
+
+            return answer;
         }
 
         public async Task<IEnumerable<Post>> GetPosts()
@@ -38,13 +48,14 @@ namespace IttFelTeheted.API.Data
                                 .Include(x => x.Topic)
                                 .Include(x => x.User)
                                 .Include(x => x.Answers)
+                                .Include(x => x.Photos)
                                 .OrderByDescending(x => x.Views).ToListAsync();
             return posts;
         }
 
-        public async Task<Topic> GetTopic(int Id)
+        public async Task<Topic> GetTopic(int id)
         {
-            var topic = await _context.Topics.FirstOrDefaultAsync(t => t.Id == Id);
+            var topic = await _context.Topics.FirstOrDefaultAsync(t => t.Id == id);
             return topic;
         }
 
@@ -131,5 +142,37 @@ namespace IttFelTeheted.API.Data
         {
             return await _context.UserPhotos.Where(u => u.UserID == userId).FirstOrDefaultAsync(p => p.IsMain);
         }
+
+        public async Task<IEnumerable<Post>> GetTrendingPosts(int topicId, int userId)
+        {
+            var topPostsByUser = await _context.Posts.Where(p => p.User.Id == userId)
+                                                    .OrderByDescending(p => p.Views)
+                                                    .Take(4)
+                                                    .Include(p => p.Photos)
+                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
+                                                    .Include(p => p.Answers)
+                                                    .ToListAsync();
+
+            var trendingPosts = await _context.Posts.Where(p => p.Topic.Id == topicId)
+                                                    .OrderByDescending(p => p.Views)
+                                                    .Take(6)
+                                                    .Include(p => p.Photos)
+                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
+                                                    .Include(p => p.Answers)
+                                                    .ToListAsync();
+
+            var topPosts = await _context.Posts.OrderByDescending(p => p.Views)
+                                                    .Take(2)
+                                                    .Include(p => p.Photos)
+                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
+                                                    .Include(p => p.Answers)
+                                                    .ToListAsync();
+
+            trendingPosts.AddRange(topPostsByUser);
+            trendingPosts.AddRange(topPosts);
+
+            return trendingPosts;
+        }
+
     }
 }

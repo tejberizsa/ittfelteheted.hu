@@ -15,7 +15,7 @@ namespace IttFelTeheted.API.Dtos
         public Topic Topic { get; set; }
         public DateTime DateAdded { get; set; }
         public int Views { get; set; }
-        public string PhotoUrl { get; set; }
+        public string UserPhotoUrl { get; set; }
         public ICollection<AnswerForDetailedDto> Answers { get; set; }
         public ICollection<PhotosForDetailedDto> Photos { get; set; }
     }

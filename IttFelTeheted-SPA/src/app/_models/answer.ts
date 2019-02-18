@@ -4,6 +4,6 @@ export interface Answer {
     dateAdded: Date;
     like: number;
     userId: number;
-    userName?: string;
+    username?: string;
     photoUrl?: string;
 }

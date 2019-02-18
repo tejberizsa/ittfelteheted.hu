@@ -97,5 +97,30 @@ namespace IttFelTeheted.API.Controllers
             return File(image, "image/jpeg");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var photoFromRepo = await _repo.GetPostedPhoto(id);
+            if(photoFromRepo == null)
+                return BadRequest("Kép nem található");
+                
+            var user = await _repo.GetUser(userId);
+            if(photoFromRepo.Post.User.Id != userId)
+                return Unauthorized();
+
+            var path = $"C:\\PostPhotos\\";
+            var extension = ".jpg";
+            var fileName = photoFromRepo.Url.Split("/").Last();
+            await Task.Run(() => System.IO.File.Delete(path + fileName + extension));
+            _repo.Delete(photoFromRepo);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Kép törlése nem sikerült");
+        }
     }
 }

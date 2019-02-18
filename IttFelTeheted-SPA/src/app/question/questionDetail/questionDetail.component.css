@@ -1,0 +1,21 @@
+.rounded-circle {
+    height: 100px;
+    width: 100px;
+}
+
+.chat-img:hover img {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.chat-img, .chat-name {
+    cursor: pointer;
+}
+
+.chat-img img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}

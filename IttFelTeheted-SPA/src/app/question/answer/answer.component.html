@@ -1,3 +1,25 @@
-<p>
-  answer works!
-</p>
+<div class="card mb-3">
+  <div *ngIf="!loggedIn()" class="card-header pt-1 pb-1">
+  <span class="answer-img float-left" (click)="mustLogin()">
+      <img src="{{answer.photoUrl}}" class="rounded-circle mr-2">
+      {{answer.username | titlecase }}
+  </span>
+</div>
+<div *ngIf="loggedIn()" class="card-header pt-1 pb-1">
+    <span class="answer-img float-left" [routerLink]="['/member/', answer.userId]">
+        <img src="{{answer.photoUrl}}" class="rounded-circle mr-2">
+        {{answer.username | titlecase }}
+    </span>
+  </div>
+  <div class="card-body">
+      <div class="btn-group-vertical pull-left mr-2" data-toggle="buttons">
+          <button type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-o-up"></i></button>
+          <div class="btn btn-outline-info like-btn">{{answer.like}}</div>
+          <button type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-o-down"></i></button>
+      </div>
+    <h6 class="card-text">{{answer.answerBody}}</h6>
+  </div>
+  <div class="card-footer text-muted">
+      <div class="pull-right text-secondary"><i class="fa fa-clock-o mr-2"></i> {{answer.dateAdded | timeago}} </div>
+  </div>
+</div>

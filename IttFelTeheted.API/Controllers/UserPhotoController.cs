@@ -30,7 +30,7 @@ namespace IttFelTeheted.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetUserPhoto")]
-        public async Task<IActionResult> GetPostPhoto(int id)
+        public async Task<IActionResult> GetUserPhoto(int id)
         {
             var photoFromRepo = await _repo.GetUserPhoto(id);
 

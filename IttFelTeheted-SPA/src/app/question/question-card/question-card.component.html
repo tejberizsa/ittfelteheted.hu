@@ -1,38 +1,18 @@
-<div class="jumbotron">
-  <h4 class="text-primary">{{post.title}}</h4>
-  <p class="lead">{{post.body}}</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-   
-  </p>
-  
+<div class="card mb-3" [routerLink]="['/detail/', post.id]">
+  <h5 class="card-header">{{post.title}}</h5>
+  <div class="card-body">
+    <h6 class="card-text">{{post.postBody}}</h6>
+    <ul class="list-inline member-icons animate text-right">
+        <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/member/', post.userId]" [queryParams]="{tab: 4}"><i class="fa fa-user"></i></button></li>
+        <li class="list-inline-item mr-2"><button class="btn btn-primary" ><i class="fa fa-heart"></i></button></li>
+      </ul>
+  </div>
+  <div class="card-img-wrapper" *ngIf="post.photoUrl != null">
+  <img style="height: 200px; width: 100%; display: block;" class="card-img-top" src="{{post.photoUrl}}">
+  </div>
+  <div class="card-footer text-muted">
+    <div><i class="fa fa-user mr-2"></i>{{ post.username | titlecase }} {{post.dateAdded | timeago}} </div>
+    <div><i class="fa fa-eye mr-2"></i>{{post.views}} megtekintés </div>
+    <div><i class="fa fa-comments mr-2"></i>{{post.answerCount}} válasz</div>
+  </div>
 </div>
-<!-- <ul class="list-inline member-icons animate text-center">
-  <li class="list-inline-item"><button class="btn btn-primary" 
-    [routerLink]="['/member/', post.userid]"><i class="fa fa-user"></i></button></li>
-  <li class="list-inline-item"><button class="btn btn-primary" (click)=""><i class="fa fa-heart"></i></button></li>
-  <li class="list-inline-item"><button class="btn btn-primary" 
-    [routerLink]="['/member/', post.userid]"
-    [queryParams]="{tab: 3}"><i class="fa fa-envelope"></i></button></li>
-</ul> -->
-
-
-<!-- <div class="card mb-4">
-  <div class="card-img-wrapper">
-    <img class="card-img-top" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.knownAs}}">
-    <ul class="list-inline member-icons animate text-center">
-      <li class="list-inline-item"><button class="btn btn-primary" 
-        [routerLink]="['/members/', user.id]"><i class="fa fa-user"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary" (click)="sendLike(user.id)"><i class="fa fa-heart"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary" 
-        [routerLink]="['/members/', user.id]"
-        [queryParams]="{tab: 3}"><i class="fa fa-envelope"></i></button></li>
-    </ul>
-  </div>
-  <div class="card-body p-1">
-    <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i> 
-        {{user.knownAs}}, {{user.age}}</h6>
-        <p class="card-text text-muted text-center">{{user.city}}</p>
-  </div>
-</div> -->

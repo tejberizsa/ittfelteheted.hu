@@ -13,14 +13,16 @@ namespace IttFelTeheted.API.Data
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
          Task<IEnumerable<Post>> GetPosts();
-         Task<Post> GetPostByID(int Id);
+         Task<Post> GetPostByID(int id);
+         Task<Answer> GetAnswerByID(int id);
          Task<IEnumerable<Topic>> GetTopics();
-         Task<Topic> GetTopic(int Id);
+         Task<Topic> GetTopic(int id);
          Task<Message> GetMessage(int id);
          Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
          Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);
          Task<PostedPhoto> GetPostedPhoto(int id);
          Task<UserPhoto> GetUserPhoto(int id);
          Task<UserPhoto> GetMainPhotoForUser(int userId);
+         Task<IEnumerable<Post>> GetTrendingPosts(int topicId, int userId);
     }
 }

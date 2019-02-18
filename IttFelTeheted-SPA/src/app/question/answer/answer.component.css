@@ -1,0 +1,25 @@
+.answer-img:hover img {
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.card .answer-img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+
+.rounded-circle {
+    height: 50px;
+    width: 50px;
+}
+
+.answer-img {
+    cursor: pointer;
+}
+
+.like-btn {
+    cursor: default !important;
+}

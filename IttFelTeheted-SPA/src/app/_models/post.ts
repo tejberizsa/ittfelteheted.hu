@@ -5,11 +5,13 @@ import { Photo } from './photo';
 export interface Post {
     id: number;
     title: string;
-    postBody: string;
-    userId: number;
-    topic: Topic[];
     dateAdded: Date;
     views: number;
+    answerCount: number;
+    userPhotoUrl?: string;
+    postBody?: string;
+    userId?: number;
+    topic?: Topic[];
     userName?: string;
     photoUrl?: string;
     answers?: Answer[];
