@@ -6,7 +6,7 @@ namespace IttFelTeheted.API.Dtos
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string UserPhotoUrl { get; set; }
+        public string Username { get; set; }
         public DateTime DateAdded { get; set; }
         public int Views { get; set; }
         public string PhotoUrl { get; set; }

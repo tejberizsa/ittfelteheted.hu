@@ -39,7 +39,7 @@ namespace IttFelTeheted.API.Helpers
             CreateMap<Post, PostForTrendingDto>()
                 .ForMember(d => d.AnswerCount, opt => opt.MapFrom(p => p.Answers.Count()))
                 .ForMember(d => d.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url))
-                .ForMember(d => d.UserPhotoUrl, opt => opt.MapFrom(p => p.User.Photos.FirstOrDefault(up => up.IsMain == true).Url));
+                .ForMember(d => d.Username, opt => opt.MapFrom(p => p.User.Username));
 
             CreateMap<MessageForCreationDto, Message>().ReverseMap();
             CreateMap<Message, MessageToReturnDto>()

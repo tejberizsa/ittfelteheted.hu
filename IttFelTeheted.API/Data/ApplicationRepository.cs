@@ -24,14 +24,20 @@ namespace IttFelTeheted.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Post> GetPostByID(int id)
+        public async Task<Post> GetPostByID(int id, bool viewIt = false)
         {
             var post = await _context.Posts
                                     .Include(x => x.Topic)
                                     .Include(x => x.User).ThenInclude(u => u.Photos)
-                                    .Include(x => x.Answers)
+                                    .Include(x => x.Answers).ThenInclude(a => a.User).ThenInclude(u => u.Photos)
                                     .Include(x => x.Photos)
                                     .FirstOrDefaultAsync(x => x.Id == id);
+            if (viewIt)
+            {
+                post.Views++;
+                await SaveAll();
+            }
+
             return post;
         }
 
@@ -149,23 +155,20 @@ namespace IttFelTeheted.API.Data
                                                     .OrderByDescending(p => p.Views)
                                                     .Take(4)
                                                     .Include(p => p.Photos)
-                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
-                                                    .Include(p => p.Answers)
+                                                    .Include(p => p.User)
                                                     .ToListAsync();
 
             var trendingPosts = await _context.Posts.Where(p => p.Topic.Id == topicId)
                                                     .OrderByDescending(p => p.Views)
                                                     .Take(6)
                                                     .Include(p => p.Photos)
-                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
-                                                    .Include(p => p.Answers)
+                                                    .Include(p => p.User)
                                                     .ToListAsync();
 
             var topPosts = await _context.Posts.OrderByDescending(p => p.Views)
                                                     .Take(2)
                                                     .Include(p => p.Photos)
-                                                    .Include(p => p.User).ThenInclude(u => u.Photos)
-                                                    .Include(p => p.Answers)
+                                                    .Include(p => p.User)
                                                     .ToListAsync();
 
             trendingPosts.AddRange(topPostsByUser);
@@ -174,5 +177,16 @@ namespace IttFelTeheted.API.Data
             return trendingPosts;
         }
 
+        public async void Like(int id)
+        {
+            var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == id);
+            answer.Like++;
+        }
+
+        public async void DisLike(int id)
+        {
+            var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == id);
+            answer.Like--;
+        }
     }
 }

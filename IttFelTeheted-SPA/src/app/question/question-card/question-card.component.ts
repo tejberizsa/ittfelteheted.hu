@@ -12,7 +12,7 @@ import { Answer } from 'src/app/_models/answer';
 })
 export class QuestionCardComponent implements OnInit {
   @Input() post: Post;
-  answer: Answer;
+  // answer: Answer;
 
   constructor(private authService: AuthService, private userService: PostService, private alertify: AlertifyService) { }
 

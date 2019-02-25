@@ -9,11 +9,13 @@ namespace IttFelTeheted.API.Data
     {
          void Add<T>(T entity) where T: class;
          void Delete<T>(T entity) where T: class;
+         void Like(int id);
+         void DisLike(int id);
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
          Task<IEnumerable<Post>> GetPosts();
-         Task<Post> GetPostByID(int id);
+         Task<Post> GetPostByID(int id, bool viewIt = false);
          Task<Answer> GetAnswerByID(int id);
          Task<IEnumerable<Topic>> GetTopics();
          Task<Topic> GetTopic(int id);

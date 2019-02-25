@@ -6,6 +6,7 @@ using AutoMapper;
 using IttFelTeheted.API.Data;
 using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IttFelTeheted.API.Controllers
@@ -36,7 +37,7 @@ namespace IttFelTeheted.API.Controllers
         [HttpGet("{id}", Name = "GetPost")]
         public async Task<IActionResult> GetPost(int id)
         {
-            var post = await _repo.GetPostByID(id);
+            var post = await _repo.GetPostByID(id, true);
 
             var postToReturn = _mapper.Map<PostForDetailedDto>(post);
 
@@ -80,6 +81,7 @@ namespace IttFelTeheted.API.Controllers
         }
 
         [HttpPost("{postId}/AddAnswer")]
+        [Authorize]
         public async Task<IActionResult> AddAnswer(int postId, AnswerForAddDto answerForAddDto)
         {
             var userFromRepo = await _repo.GetUser(answerForAddDto.UserId);
@@ -103,8 +105,7 @@ namespace IttFelTeheted.API.Controllers
             _repo.Add(answerToCreate);
             
             if(await _repo.SaveAll()) {
-                var answerCreated = await _repo.GetPostByID(answerToCreate.PostId);
-                var answerToReturn = _mapper.Map<AnswerForDetailedDto>(answerCreated);
+                var answerToReturn = _mapper.Map<AnswerForDetailedDto>(answerToCreate);
                 return CreatedAtRoute("GetAnswer", new {id = answerToReturn.Id}, answerToReturn);
             }
 
@@ -124,6 +125,24 @@ namespace IttFelTeheted.API.Controllers
             var result = _mapper.Map<IEnumerable<PostForTrendingDto>>(trendingPosts);
 
             return Ok(result);
+        }
+
+        [HttpPatch("like/{id}")]
+        [Authorize]
+        public async Task<IActionResult> LikeAnswer(int id)
+        {
+            _repo.Like(id);
+            await _repo.SaveAll();
+            return Ok();
+        }
+
+        [HttpPatch("dislike/{id}")]
+        [Authorize]
+        public async Task<IActionResult> DisLikeAnswer(int id)
+        {
+            _repo.DisLike(id);
+            await _repo.SaveAll();
+            return Ok();
         }
     }
 }

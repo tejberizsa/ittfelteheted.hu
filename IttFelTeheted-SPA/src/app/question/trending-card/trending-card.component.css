@@ -1,35 +1,25 @@
-.rounded-circle {
-    height: 100px;
-    width: 100px;
+.media {
+    cursor: pointer;
 }
 
-.chat-img:hover img {
+.media:hover img {
     transform: scale(1.1, 1.1);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
     opacity: 0.9;
 }
 
-.chat-img, .chat-name {
+.media {
     cursor: pointer;
 }
 
-.chat-img img {
+.media img {
     transform: scale(1.0, 1.0);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
 }
 
-.detail-wrapper {
-    margin-left: 8px !important;
-    margin-right: 8px !important;
-}
-
-.trending-wrapper {
-    margin-top: 46px;
-}
-
-.card {
+.media-img-wrapper {
     overflow: hidden;
     position: relative;
 }

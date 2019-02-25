@@ -1,5 +1,5 @@
+<div class="detail-wrapper">
 <div class="row wrapper">
-<div class="col-lg-10 content">
     <div class="container mt-5">
         <div class="input-group justify-content-center">
             <input type="text" class="form-control" placeholder="Keresés">
@@ -12,28 +12,29 @@
           <br/>
     </div>
     <br/>
-    <div class="container">
 
+    <div class="col-lg-8 offset-lg-1 content">
       
 
-        <div class="mb-8">
+        <div class="mb-8 card">
           <div *ngIf="loggedIn()" [routerLink]="['/member/', post.userId]">
             <span class="chat-img float-left">
                 <img src="{{post.userPhotoUrl}}" class="rounded-circle">
             </span>
             <p class="chat-name mb-0">{{post.userName | titlecase}}</p>
+            <h2 class="font-weight-bold text-info">{{post.title}}</h2>
           </div>
           <div *ngIf="!loggedIn()" (click)="mustLogin()">
               <span class="chat-img float-left">
                   <img src="{{post.userPhotoUrl}}" class="rounded-circle">
               </span>
               <p class="chat-name mb-0">{{post.userName | titlecase}}</p>
+              <h2 class="font-weight-bold text-info">{{post.title}}</h2>
             </div>
-            <h2 class="font-weight-bold text-info">{{post.title}}</h2>
-            <p class="detailbody font-weight-bold text-primary">{{post.postBody}}</p>
+            <div class="detailbody font-weight-bold text-primary" [innerHTML]="post.postBody"></div>
             <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
             <div class="row">
-              <div class="col-3 text-secondary"><i class="fa fa-eye mr-2"></i>{{post.views}} megtekintés</div>
+              <div class="col-3 text-secondary"><i class="fa fa-eye mr-2 ml-2"></i>{{post.views}} megtekintés</div>
               <div class="offset-6 col-3 text-secondary"><i class="fa fa-clock-o mr-2"></i> {{post.dateAdded | timeago}} </div>
             </div>
         </div>
@@ -41,20 +42,21 @@
           <app-answer [answer]="answer"></app-answer>
         </div>
 
-
-    </div>
-    <div class="container">
         <h4 class="font-weight-bold text-info">Válaszolj {{post.userName | titlecase}} posztjára:</h4>
         <app-ngx-editor [spellcheck]="false" 
         [config]="editorConfig" 
         [(ngModel)]="newAnswer.answerBody"
         form="answerForm" required></app-ngx-editor>
         <form #answerForm="ngForm" (ngSubmit)="answerForm.valid && sendAnswer()">
-              <button class="btn btn-primary" [disabled]="!answerForm.valid">Válasz beküldése</button>
+              <button class="btn btn-primary text-success pull-right mb-20" style="width: 200px;" [disabled]="!answerForm.valid">Válasz beküldése</button>
         </form>
-    </div>
-</div>
-<div class="col-lg-2">
 
+</div>
+<div class="col-lg-2 trending-wrapper">
+  <p class="text-warning font-weight-bold">Következő népszerű kérdések és posztok:</p>
+  <div *ngFor="let trending of trendings">
+    <app-trending-card [trending]="trending"></app-trending-card>
+  </div>
+</div>
 </div>
 </div>

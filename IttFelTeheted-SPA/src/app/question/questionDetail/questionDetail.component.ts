@@ -86,13 +86,15 @@ export class QuestionDetailComponent implements OnInit {
   }
 
   sendAnswer() {
+    if (!this.authService.loggedIn()) {
+      this.alertify.error('Válasz küldéshez be kell jelentkezned');
+    }
     this.newAnswer.userId = this.authService.decodedToken.nameid;
     this.postService.sendAnswer(this.post.id, this.newAnswer).subscribe((answer: Answer) => {
-      this.post.answers.unshift(answer);
+      this.post.answers.push(answer);
       this.newAnswer = {};
     }, error => {
       this.alertify.error(error);
     });
   }
-
 }

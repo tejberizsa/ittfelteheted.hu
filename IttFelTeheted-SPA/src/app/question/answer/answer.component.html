@@ -17,7 +17,7 @@
           <div class="btn btn-outline-info like-btn">{{answer.like}}</div>
           <button type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-o-down"></i></button>
       </div>
-    <h6 class="card-text">{{answer.answerBody}}</h6>
+    <div class="card-text" [innerHTML]="answer.answerBody"></div>
   </div>
   <div class="card-footer text-muted">
       <div class="pull-right text-secondary"><i class="fa fa-clock-o mr-2"></i> {{answer.dateAdded | timeago}} </div>
