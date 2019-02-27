@@ -6,6 +6,7 @@ using AutoMapper;
 using IttFelTeheted.API.Data;
 using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Helpers;
+using IttFelTeheted.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,6 +61,53 @@ namespace IttFelTeheted.API.Controllers
                 return NoContent();
             
             throw new Exception($"Updating user {id} failed on save");
+        }
+
+        [HttpPost("{userId}/follow/{followedId}")]
+        public async Task<IActionResult> FollowUser(int userId, int followedId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFollow = await _repo.GetUserFollow(userId, followedId);
+
+            if (userFollow != null)
+                return BadRequest("Már követed");
+
+            var followed = await _repo.GetUser(followedId);
+            if (followed == null)
+                return NotFound();
+            
+            userFollow = new UserFollow
+            {
+                FollowerId = userId,
+                FollowedId = followedId
+            };
+            _repo.Add<UserFollow>(userFollow);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Nem sikerült a feliratkozás");
+        }
+
+        [HttpPost("{userId}/unfollow/{followedId}")]
+        public async Task<IActionResult> UnfollowUser(int userId, int followedId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFollow = await _repo.GetUserFollow(userId, followedId);
+
+            if (userFollow == null)
+                return BadRequest("Nem követed ezt a felhasználót");
+
+            _repo.Delete<UserFollow>(userFollow);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Nem sikerült a leiratkozás");
         }
     }
 }

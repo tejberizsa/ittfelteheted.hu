@@ -69,4 +69,12 @@ constructor(private http: HttpClient) { }
   deletePhoto(userId: number, id: number) {
     return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id);
   }
+
+  sendFollow(userId: number, followedId: number) {
+    return this.http.post(this.baseUrl + 'users/' + userId + '/follow/' + followedId, {});
+  }
+
+  sendDisfollow(userId: number, followedId: number) {
+    return this.http.post(this.baseUrl + 'users/' + userId + '/unfollow/' + followedId, {});
+  }
 }

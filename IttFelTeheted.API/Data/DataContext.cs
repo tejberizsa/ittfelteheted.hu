@@ -15,6 +15,7 @@ namespace IttFelTeheted.API.Data
         public DbSet<PostedPhoto> PostedPhotos { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Vote> Votes { get; set; }
+        public DbSet<UserFollow> UserFollows { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +42,21 @@ namespace IttFelTeheted.API.Data
                 .HasOne(u => u.Voter)
                 .WithMany(a => a.Voted)
                 .HasForeignKey(u => u.VoterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<UserFollow>()
+                .HasKey(uf => new {uf.FollowerId, uf.FollowedId});
+
+            modelBuilder.Entity<UserFollow>()
+                .HasOne(u => u.Followed)
+                .WithMany(u => u.Follower)
+                .HasForeignKey(uf => uf.FollowedId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<UserFollow>()
+                .HasOne(u => u.Follower)
+                .WithMany(u => u.Followed)
+                .HasForeignKey(uf => uf.FollowerId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

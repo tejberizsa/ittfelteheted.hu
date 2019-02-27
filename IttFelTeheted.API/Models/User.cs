@@ -19,5 +19,7 @@ namespace IttFelTeheted.API.Models
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
         public ICollection<Vote> Voted { get; set; }
+        public ICollection<UserFollow> Follower { get; set; }
+        public ICollection<UserFollow> Followed { get; set; }
     }
 }

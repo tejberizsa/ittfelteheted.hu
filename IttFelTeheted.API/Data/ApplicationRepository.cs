@@ -182,5 +182,11 @@ namespace IttFelTeheted.API.Data
             return await _context.Votes.FirstOrDefaultAsync(v => 
                                         v.VoterId == userId && v.VotedId == answerId);
         }
+
+        public async Task<UserFollow> GetUserFollow(int userId, int followedId)
+        {
+            return await _context.UserFollows.FirstOrDefaultAsync(uf => 
+                                        uf.FollowerId == userId && uf.FollowedId == followedId);
+        }
     }
 }

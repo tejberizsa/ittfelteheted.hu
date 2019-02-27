@@ -37,7 +37,7 @@ export class AnswerComponent implements OnInit {
     });
   }
 
-  sendDislike(i) {
+  sendDislike() {
     if (!this.authService.loggedIn()) {
       this.alertify.error('Szavazat küldéshez be kell jelentkezned');
     }
