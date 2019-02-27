@@ -13,9 +13,9 @@
   </div>
   <div class="card-body">
       <div class="btn-group-vertical pull-left mr-2" data-toggle="buttons">
-          <button type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-o-up"></i></button>
+          <button type="button" class="btn btn-outline-success" (click)="sendLike()"><i class="fa fa-thumbs-o-up"></i></button>
           <div class="btn btn-outline-info like-btn">{{answer.like}}</div>
-          <button type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-o-down"></i></button>
+          <button type="button" class="btn btn-outline-danger" (click)="sendDislike()"><i class="fa fa-thumbs-o-down"></i></button>
       </div>
     <div class="card-text" [innerHTML]="answer.answerBody"></div>
   </div>

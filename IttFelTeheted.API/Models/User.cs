@@ -18,5 +18,6 @@ namespace IttFelTeheted.API.Models
         public DateTime LastActive { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
+        public ICollection<Vote> Voted { get; set; }
     }
 }

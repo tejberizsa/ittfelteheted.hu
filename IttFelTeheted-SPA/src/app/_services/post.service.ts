@@ -33,4 +33,12 @@ constructor(private http: HttpClient) { }
   sendAnswer(postId: number, answer: Answer) {
     return this.http.post(this.baseUrl + 'post/' + postId + '/addanswer', answer);
   }
+
+  sendLike(id: number, answerId: number) {
+    return this.http.post(this.baseUrl + 'post/' + id + '/like/' + answerId, {});
+  }
+
+  sendDislike(id: number, answerId: number) {
+    return this.http.post(this.baseUrl + 'post/' + id + '/dislike/' + answerId, {});
+  }
 }

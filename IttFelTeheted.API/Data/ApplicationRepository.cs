@@ -177,16 +177,10 @@ namespace IttFelTeheted.API.Data
             return trendingPosts;
         }
 
-        public async void Like(int id)
+        public async Task<Vote> GetVote(int userId, int answerId)
         {
-            var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == id);
-            answer.Like++;
-        }
-
-        public async void DisLike(int id)
-        {
-            var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == id);
-            answer.Like--;
+            return await _context.Votes.FirstOrDefaultAsync(v => 
+                                        v.VoterId == userId && v.VotedId == answerId);
         }
     }
 }

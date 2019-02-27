@@ -9,8 +9,6 @@ namespace IttFelTeheted.API.Data
     {
          void Add<T>(T entity) where T: class;
          void Delete<T>(T entity) where T: class;
-         void Like(int id);
-         void DisLike(int id);
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
@@ -26,5 +24,6 @@ namespace IttFelTeheted.API.Data
          Task<UserPhoto> GetUserPhoto(int id);
          Task<UserPhoto> GetMainPhotoForUser(int userId);
          Task<IEnumerable<Post>> GetTrendingPosts(int topicId, int userId);
+         Task<Vote> GetVote(int userId, int answerId);
     }
 }

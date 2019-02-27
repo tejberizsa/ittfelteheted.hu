@@ -127,22 +127,66 @@ namespace IttFelTeheted.API.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("like/{id}")]
-        [Authorize]
-        public async Task<IActionResult> LikeAnswer(int id)
+        [HttpPost("{userId}/like/{answerId}")]
+        public async Task<IActionResult> LikeAnswer(int userId, int answerId)
         {
-            _repo.Like(id);
-            await _repo.SaveAll();
-            return Ok();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var vote = await _repo.GetVote(userId, answerId);
+
+            if (vote != null)
+                return BadRequest("Már szavaztál erre a válaszra!");
+
+            var answer = await _repo.GetAnswerByID(answerId);
+            if (answer == null)
+                return NotFound();
+            
+            vote = new Vote
+            {
+                VoterId = userId,
+                VotedId = answerId,
+                IsCorrect = true
+            };
+            _repo.Add<Vote>(vote);
+
+            answer.Like++;
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Szavazat nem sikerült");
         }
 
-        [HttpPatch("dislike/{id}")]
-        [Authorize]
-        public async Task<IActionResult> DisLikeAnswer(int id)
+        [HttpPost("{userId}/dislike/{answerId}")]
+        public async Task<IActionResult> DislikeAnswer(int userId, int answerId)
         {
-            _repo.DisLike(id);
-            await _repo.SaveAll();
-            return Ok();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var vote = await _repo.GetVote(userId, answerId);
+
+            if (vote != null)
+                return BadRequest("Már szavaztál erre a válaszra!");
+
+            var answer = await _repo.GetAnswerByID(answerId);
+            if (answer == null)
+                return NotFound();
+            
+            vote = new Vote
+            {
+                VoterId = userId,
+                VotedId = answerId,
+                IsCorrect = false
+            };
+            _repo.Add<Vote>(vote);
+
+            answer.Like--;
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Szavazat nem sikerült");
         }
     }
 }

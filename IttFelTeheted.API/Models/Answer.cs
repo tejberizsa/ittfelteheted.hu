@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace IttFelTeheted.API.Models
 {
@@ -12,5 +13,6 @@ namespace IttFelTeheted.API.Models
         public string PhotoUrl { get; set; }
         public Post Post { get; set; }
         public int PostId { get; set; }
+        public ICollection<Vote> Voter { get; set; }
     }
 }
