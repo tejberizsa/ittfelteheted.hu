@@ -1,16 +1,22 @@
-<div class="card mb-3" [routerLink]="['/detail/', post.id]">
-  <h5 class="card-header">{{post.title}}</h5>
+<div class="card mb-3">
+  <h5 class="card-header"  [routerLink]="['/detail/', post.id]">{{post.title}}</h5>
   <div class="card-body">
-    <h6 class="card-text" [innerHTML]="post.postBody"></h6>
-    <ul class="list-inline member-icons animate text-right">
+    <h6 class="card-text" [innerHTML]="post.postBody" [routerLink]="['/detail/', post.id]"></h6>
+    <ul class="list-inline member-icons animate text-right" *ngIf="post.isFollowedByCurrentUser">
+        <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/detail/', post.id]"><i class="fa fa-eye"></i></button></li>
         <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/member/', post.userId]" [queryParams]="{tab: 4}"><i class="fa fa-user"></i></button></li>
-        <li class="list-inline-item mr-2"><button class="btn btn-primary" ><i class="fa fa-heart"></i></button></li>
+        <li class="list-inline-item"><button class="btn btn-secondary" (click)="sendDisfollow()"><i class="fa fa-heart"></i></button></li>
       </ul>
+      <ul class="list-inline member-icons animate text-right" *ngIf="!post.isFollowedByCurrentUser">
+          <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/detail/', post.id]"><i class="fa fa-eye"></i></button></li>
+          <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/member/', post.userId]" [queryParams]="{tab: 4}"><i class="fa fa-user"></i></button></li>
+          <li class="list-inline-item"><button class="btn btn-primary"  (click)="sendFollow()"><i class="fa fa-heart"></i></button></li>
+        </ul>
   </div>
-  <div class="card-img-wrapper" *ngIf="post.photoUrl != null">
+  <div class="card-img-wrapper" *ngIf="post.photoUrl != null" [routerLink]="['/detail/', post.id]">
   <img style="height: 200px; width: 100%; display: block;" class="card-img-top" src="{{post.photoUrl}}">
   </div>
-  <div class="card-footer text-muted">
+  <div class="card-footer text-muted" [routerLink]="['/detail/', post.id]">
     <div><i class="fa fa-user mr-2"></i>{{ post.username | titlecase }} {{post.dateAdded | timeago}} </div>
     <div><i class="fa fa-eye mr-2"></i>{{post.views}} megtekintés </div>
     <div><i class="fa fa-comments mr-2"></i>{{post.answerCount}} válasz</div>

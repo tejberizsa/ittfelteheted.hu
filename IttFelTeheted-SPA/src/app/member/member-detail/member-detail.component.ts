@@ -62,6 +62,7 @@ export class MemberDetailComponent implements OnInit {
 
   sendFollow() {
     this.userService.sendFollow(this.authService.decodedToken.nameid, this.user.id).subscribe(data => {
+      this.user.isFollowedByCurrentUser = true;
       this.alertify.success('Sikeres feliratkozás');
     }, error => {
       this.alertify.error(error);
@@ -70,6 +71,7 @@ export class MemberDetailComponent implements OnInit {
 
   sendDisfollow() {
     this.userService.sendDisfollow(this.authService.decodedToken.nameid, this.user.id).subscribe(data => {
+      this.user.isFollowedByCurrentUser = false;
       this.alertify.success('Sikeres leiratkozás');
     }, error => {
       this.alertify.error(error);

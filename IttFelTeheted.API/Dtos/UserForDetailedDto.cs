@@ -15,5 +15,6 @@ namespace IttFelTeheted.API.Dtos
         public DateTime RegistrationDate { get; set; }
         public DateTime LastActive { get; set; }
         public ICollection<PhotosForDetailedDto> Photos { get; set; }
+        public bool IsFollowedByCurrentUser { get; set; }
     }
 }

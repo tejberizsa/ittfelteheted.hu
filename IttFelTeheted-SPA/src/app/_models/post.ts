@@ -16,4 +16,5 @@ export interface Post {
     photoUrl?: string;
     answers?: Answer[];
     photos?: Photo[];
+    isFollowedByCurrentUser?: boolean;
 }

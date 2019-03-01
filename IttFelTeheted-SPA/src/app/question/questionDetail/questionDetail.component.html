@@ -17,19 +17,24 @@
       
 
         <div class="mb-8 card">
-          <div *ngIf="loggedIn()" [routerLink]="['/member/', post.userId]">
-            <span class="chat-img float-left">
+          <div *ngIf="loggedIn()">
+            <span class="chat-img float-left" [routerLink]="['/member/', post.userId]">
                 <img src="{{post.userPhotoUrl}}" class="rounded-circle">
             </span>
-            <p class="chat-name mb-0">{{post.userName | titlecase}}</p>
-            <h2 class="font-weight-bold text-info">{{post.title}}</h2>
+            <p class="chat-name mb-0" [routerLink]="['/member/', post.userId]">{{post.userName | titlecase}}</p>
+            <div class="list-inline-item mr-2 pull-right">
+                  <button class="btn btn-primary" *ngIf="!post.isFollowedByCurrentUser" (click)="sendFollow()">
+                  <i class="fa fa-heart"></i></button>
+                  <button class="btn btn-secondary" *ngIf="post.isFollowedByCurrentUser" (click)="sendDisfollow()">
+                  <i class="fa fa-heart"></i></button></div>
+            <h2 class="font-weight-bold text-primary">{{post.title}}</h2>
           </div>
-          <div *ngIf="!loggedIn()" (click)="mustLogin()">
-              <span class="chat-img float-left">
+          <div *ngIf="!loggedIn()">
+              <span class="chat-img float-left" (click)="mustLogin()">
                   <img src="{{post.userPhotoUrl}}" class="rounded-circle">
               </span>
-              <p class="chat-name mb-0">{{post.userName | titlecase}}</p>
-              <h2 class="font-weight-bold text-info">{{post.title}}</h2>
+              <p class="chat-name mb-0" (click)="mustLogin()">{{post.userName | titlecase}}</p>
+              <h2 class="font-weight-bold text-primary">{{post.title}}</h2>
             </div>
             <div class="detailbody font-weight-bold text-primary" [innerHTML]="post.postBody"></div>
             <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
@@ -42,7 +47,7 @@
           <app-answer [answer]="answer"></app-answer>
         </div>
 
-        <h4 class="font-weight-bold text-info">Válaszolj {{post.userName | titlecase}} posztjára:</h4>
+        <h4 class="font-weight-bold text-primary">Válaszolj {{post.userName | titlecase}} posztjára:</h4>
         <app-ngx-editor [spellcheck]="false" 
         [config]="editorConfig" 
         [(ngModel)]="newAnswer.answerBody"
@@ -53,7 +58,7 @@
 
 </div>
 <div class="col-lg-2 trending-wrapper">
-  <p class="text-warning font-weight-bold">Következő népszerű kérdések és posztok:</p>
+  <p class="text-secondary font-weight-bold">Következő népszerű kérdések és posztok:</p>
   <div *ngFor="let trending of trendings">
     <app-trending-card [trending]="trending"></app-trending-card>
   </div>

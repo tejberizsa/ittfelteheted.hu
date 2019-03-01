@@ -18,5 +18,6 @@ namespace IttFelTeheted.API.Dtos
         public string UserPhotoUrl { get; set; }
         public ICollection<AnswerForDetailedDto> Answers { get; set; }
         public ICollection<PhotosForDetailedDto> Photos { get; set; }
+        public bool IsFollowedByCurrentUser { get; set; }
     }
 }

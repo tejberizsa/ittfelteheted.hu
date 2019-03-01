@@ -16,6 +16,7 @@ namespace IttFelTeheted.API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Vote> Votes { get; set; }
         public DbSet<UserFollow> UserFollows { get; set; }
+        public DbSet<PostFollow> PostFollows { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,6 +58,21 @@ namespace IttFelTeheted.API.Data
                 .HasOne(u => u.Follower)
                 .WithMany(u => u.Followed)
                 .HasForeignKey(uf => uf.FollowerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PostFollow>()
+                .HasKey(pf => new {pf.FollowerId, pf.FollowedId});
+
+            modelBuilder.Entity<PostFollow>()
+                .HasOne(p => p.Followed)
+                .WithMany(u => u.PostFollower)
+                .HasForeignKey(pf => pf.FollowedId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PostFollow>()
+                .HasOne(u => u.Follower)
+                .WithMany(p => p.PostFollowed)
+                .HasForeignKey(pf => pf.FollowerId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

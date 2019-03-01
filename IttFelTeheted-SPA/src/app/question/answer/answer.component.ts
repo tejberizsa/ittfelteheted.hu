@@ -28,6 +28,7 @@ export class AnswerComponent implements OnInit {
   sendLike() {
     if (!this.authService.loggedIn()) {
       this.alertify.error('Szavazat küldéshez be kell jelentkezned');
+      return;
     }
     this.postService.sendLike(this.authService.decodedToken.nameid, this.answer.id).subscribe(data => {
       this.alertify.success('Sikeres szavazat');
@@ -40,6 +41,7 @@ export class AnswerComponent implements OnInit {
   sendDislike() {
     if (!this.authService.loggedIn()) {
       this.alertify.error('Szavazat küldéshez be kell jelentkezned');
+      return;
     }
     this.postService.sendDislike(this.authService.decodedToken.nameid, this.answer.id).subscribe(data => {
       this.alertify.success('Sikeres szavazat');

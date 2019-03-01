@@ -17,5 +17,7 @@ namespace IttFelTeheted.API.Dtos
         public string PhotoUrl { get; set; }
         public AnswerForDetailedDto Answer { get; set; }
         public int AnswerCount { get; set; }
+        
+        public bool IsFollowedByCurrentUser { get; set; }
     }
 }

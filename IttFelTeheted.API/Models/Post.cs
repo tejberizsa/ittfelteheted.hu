@@ -14,6 +14,6 @@ namespace IttFelTeheted.API.Models
         public int Views { get; set; }
         public ICollection<PostedPhoto> Photos { get; set; }
         public ICollection<Answer> Answers { get; set; }
-
+        public ICollection<PostFollow> PostFollower { get; set; }
     }
 }

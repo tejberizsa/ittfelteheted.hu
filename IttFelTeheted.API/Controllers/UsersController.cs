@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -43,6 +44,8 @@ namespace IttFelTeheted.API.Controllers
             var user = await _repo.GetUser(id);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+
+            userToReturn.IsFollowedByCurrentUser = user.Follower.Any(f => f.FollowerId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
             return Ok(userToReturn);
         }

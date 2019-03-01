@@ -31,6 +31,7 @@ namespace IttFelTeheted.API.Data
                                     .Include(x => x.User).ThenInclude(u => u.Photos)
                                     .Include(x => x.Answers).ThenInclude(a => a.User).ThenInclude(u => u.Photos)
                                     .Include(x => x.Photos)
+                                    .Include(x => x.PostFollower)
                                     .FirstOrDefaultAsync(x => x.Id == id);
             if (viewIt)
             {
@@ -55,6 +56,7 @@ namespace IttFelTeheted.API.Data
                                 .Include(x => x.User)
                                 .Include(x => x.Answers)
                                 .Include(x => x.Photos)
+                                .Include(x => x.PostFollower)
                                 .OrderByDescending(x => x.Views).ToListAsync();
             return posts;
         }
@@ -73,7 +75,10 @@ namespace IttFelTeheted.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(u => u.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users
+                                        .Include(u => u.Photos)
+                                        .Include(u => u.Follower)
+                                        .FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
@@ -187,6 +192,12 @@ namespace IttFelTeheted.API.Data
         {
             return await _context.UserFollows.FirstOrDefaultAsync(uf => 
                                         uf.FollowerId == userId && uf.FollowedId == followedId);
+        }
+
+        public async Task<PostFollow> GetPostFollow(int userId, int followedId)
+        {
+            return await _context.PostFollows.FirstOrDefaultAsync(pf => 
+                                        pf.FollowerId == userId && pf.FollowedId == followedId);
         }
     }
 }

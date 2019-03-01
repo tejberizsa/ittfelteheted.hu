@@ -21,5 +21,6 @@ namespace IttFelTeheted.API.Models
         public ICollection<Vote> Voted { get; set; }
         public ICollection<UserFollow> Follower { get; set; }
         public ICollection<UserFollow> Followed { get; set; }
+        public ICollection<PostFollow> PostFollowed { get; set; }
     }
 }

@@ -41,4 +41,12 @@ constructor(private http: HttpClient) { }
   sendDislike(id: number, answerId: number) {
     return this.http.post(this.baseUrl + 'post/' + id + '/dislike/' + answerId, {});
   }
+
+  sendFollow(userId: number, followedId: number) {
+    return this.http.post(this.baseUrl + 'post/' + userId + '/follow/' + followedId, {});
+  }
+
+  sendDisfollow(userId: number, followedId: number) {
+    return this.http.post(this.baseUrl + 'post/' + userId + '/unfollow/' + followedId, {});
+  }
 }

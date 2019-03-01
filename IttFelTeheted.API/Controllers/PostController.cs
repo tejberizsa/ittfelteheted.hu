@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -31,6 +32,13 @@ namespace IttFelTeheted.API.Controllers
 
             var postsToReturn = _mapper.Map<IEnumerable<PostForListDto>>(posts);
 
+            if (User.Identity.IsAuthenticated)
+            foreach (var post in postsToReturn)
+            {
+                post.IsFollowedByCurrentUser = posts.First(p => p.Id == post.Id)
+                                                    .PostFollower.Any(f => f.FollowerId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            }
+
             return Ok(postsToReturn);
         }
 
@@ -40,6 +48,9 @@ namespace IttFelTeheted.API.Controllers
             var post = await _repo.GetPostByID(id, true);
 
             var postToReturn = _mapper.Map<PostForDetailedDto>(post);
+
+            if (User.Identity.IsAuthenticated)
+                postToReturn.IsFollowedByCurrentUser = post.PostFollower.Any(f => f.FollowerId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
 
             return Ok(postToReturn);
         }
@@ -187,6 +198,53 @@ namespace IttFelTeheted.API.Controllers
                 return Ok();
 
             return BadRequest("Szavazat nem sikerült");
+        }
+
+        [HttpPost("{userId}/follow/{followedId}")]
+        public async Task<IActionResult> FollowPost(int userId, int followedId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var postFollow = await _repo.GetPostFollow(userId, followedId);
+
+            if (postFollow != null)
+                return BadRequest("Már követed");
+
+            var followed = await _repo.GetPostByID(followedId);
+            if (followed == null)
+                return NotFound();
+            
+            postFollow = new PostFollow
+            {
+                FollowerId = userId,
+                FollowedId = followedId
+            };
+            _repo.Add<PostFollow>(postFollow);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Nem sikerült a feliratkozás");
+        }
+
+        [HttpPost("{userId}/unfollow/{followedId}")]
+        public async Task<IActionResult> UnfollowPost(int userId, int followedId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var postFollow = await _repo.GetPostFollow(userId, followedId);
+
+            if (postFollow == null)
+                return BadRequest("Nem követed ezt a posztot");
+
+            _repo.Delete<PostFollow>(postFollow);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Nem sikerült a leiratkozás");
         }
     }
 }

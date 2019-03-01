@@ -10,4 +10,5 @@ export interface User {
     introduction?: string;
     photoUrl?: string;
     photos?: Photo[];
+    isFollowedByCurrentUser?: boolean;
 }

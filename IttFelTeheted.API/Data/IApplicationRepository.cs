@@ -26,5 +26,6 @@ namespace IttFelTeheted.API.Data
          Task<IEnumerable<Post>> GetTrendingPosts(int topicId, int userId);
          Task<Vote> GetVote(int userId, int answerId);
          Task<UserFollow> GetUserFollow(int userId, int followedId);
+         Task<PostFollow> GetPostFollow(int userId, int followedId);
     }
 }

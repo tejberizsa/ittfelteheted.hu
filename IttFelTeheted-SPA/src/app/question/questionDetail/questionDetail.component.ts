@@ -88,11 +88,30 @@ export class QuestionDetailComponent implements OnInit {
   sendAnswer() {
     if (!this.authService.loggedIn()) {
       this.alertify.error('Válasz küldéshez be kell jelentkezned');
+      return;
     }
     this.newAnswer.userId = this.authService.decodedToken.nameid;
     this.postService.sendAnswer(this.post.id, this.newAnswer).subscribe((answer: Answer) => {
       this.post.answers.push(answer);
       this.newAnswer = {};
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
+  sendFollow() {
+    this.postService.sendFollow(this.authService.decodedToken.nameid, this.post.id).subscribe(data => {
+      this.post.isFollowedByCurrentUser = true;
+      this.alertify.success('Sikeres feliratkozás');
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
+  sendDisfollow() {
+    this.postService.sendDisfollow(this.authService.decodedToken.nameid, this.post.id).subscribe(data => {
+      this.post.isFollowedByCurrentUser = false;
+      this.alertify.success('Sikeres leiratkozás');
     }, error => {
       this.alertify.error(error);
     });
