@@ -6,7 +6,6 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 import { AuthService } from 'src/app/_services/auth.service';
 import { Answer } from 'src/app/_models/answer';
 import { PostService } from 'src/app/_services/post.service';
-import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-question-detail',
@@ -111,7 +110,7 @@ export class QuestionDetailComponent implements OnInit {
   sendDisfollow() {
     this.postService.sendDisfollow(this.authService.decodedToken.nameid, this.post.id).subscribe(data => {
       this.post.isFollowedByCurrentUser = false;
-      this.alertify.success('Sikeres leiratkozás');
+      this.alertify.message('Sikeres leiratkozás');
     }, error => {
       this.alertify.error(error);
     });

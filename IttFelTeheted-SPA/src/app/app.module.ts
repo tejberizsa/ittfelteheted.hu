@@ -39,6 +39,7 @@ import { MemberPhotoEditorComponent } from './member/member-photo-editor/member-
 import { PostDetailResolver } from './_resolvers/post-detail.resolver';
 import { PostTrendingResolver } from './_resolvers/post-trending.resolver';
 import { TrendingCardComponent } from './question/trending-card/trending-card.component';
+import { QuestionAddComponent } from './question/question-add/question-add.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -62,7 +63,8 @@ export class MyIntl extends TimeagoIntl {
       MemberEditComponent,
       MemberMessagesComponent,
       MemberPhotoEditorComponent,
-      TrendingCardComponent
+      TrendingCardComponent,
+      QuestionAddComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],

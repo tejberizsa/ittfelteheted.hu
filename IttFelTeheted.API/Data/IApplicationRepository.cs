@@ -14,6 +14,7 @@ namespace IttFelTeheted.API.Data
          Task<User> GetUser(int id);
          Task<IEnumerable<Post>> GetPosts();
          Task<Post> GetPostByID(int id, bool viewIt = false);
+         Task<Post> GetPostByRandom();
          Task<Answer> GetAnswerByID(int id);
          Task<IEnumerable<Topic>> GetTopics();
          Task<Topic> GetTopic(int id);

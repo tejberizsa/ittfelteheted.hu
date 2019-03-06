@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,6 +39,24 @@ namespace IttFelTeheted.API.Data
                 post.Views++;
                 await SaveAll();
             }
+
+            return post;
+        }
+
+        public async Task<Post> GetPostByRandom()
+        {
+            Random rand = new Random();
+            var skip = (int)(rand.NextDouble() * _context.Posts.Count());
+            var post = await _context.Posts
+                                    .Include(x => x.Topic)
+                                    .Include(x => x.User).ThenInclude(u => u.Photos)
+                                    .Include(x => x.Answers).ThenInclude(a => a.User).ThenInclude(u => u.Photos)
+                                    .Include(x => x.Photos)
+                                    .Include(x => x.PostFollower)
+                                    .Skip(skip).Take(1)
+                                    .FirstOrDefaultAsync();
+            post.Views++;
+            await SaveAll();
 
             return post;
         }

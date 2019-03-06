@@ -1,3 +1,7 @@
 .btn-group-vertical {
     width: stretch;
 }
+
+.mark-active:focus i {
+    color: red;
+}

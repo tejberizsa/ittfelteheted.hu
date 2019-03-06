@@ -15,8 +15,6 @@ namespace IttFelTeheted.API.Dtos
         public int TopicId { get; set; }
         public DateTime DateAdded { get; set; }
         public int Views { get; set; }
-        public string PhotoUrl { get; set; }
-
         public PostForAddDto()
         {
             Views = 0;

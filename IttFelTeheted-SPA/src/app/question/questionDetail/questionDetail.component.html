@@ -24,9 +24,9 @@
             <p class="chat-name mb-0" [routerLink]="['/member/', post.userId]">{{post.userName | titlecase}}</p>
             <div class="list-inline-item mr-2 pull-right">
                   <button class="btn btn-primary" *ngIf="!post.isFollowedByCurrentUser" (click)="sendFollow()">
-                  <i class="fa fa-heart"></i></button>
+                  <i class="fa fa-heart" style="color: red;"></i> Feliratkozás</button>
                   <button class="btn btn-secondary" *ngIf="post.isFollowedByCurrentUser" (click)="sendDisfollow()">
-                  <i class="fa fa-heart"></i></button></div>
+                  <i class="fa fa-heart"></i> Feliratkozás</button></div>
             <h2 class="font-weight-bold text-primary">{{post.title}}</h2>
           </div>
           <div *ngIf="!loggedIn()">
@@ -48,7 +48,7 @@
         </div>
 
         <h4 class="font-weight-bold text-primary">Válaszolj {{post.userName | titlecase}} posztjára:</h4>
-        <app-ngx-editor [spellcheck]="false" 
+        <app-ngx-editor minHeight="220px" [spellcheck]="false" 
         [config]="editorConfig" 
         [(ngModel)]="newAnswer.answerBody"
         form="answerForm" required></app-ngx-editor>

@@ -34,6 +34,10 @@ constructor(private http: HttpClient) { }
     return this.http.post(this.baseUrl + 'post/' + postId + '/addanswer', answer);
   }
 
+  sendPost(post: Post) {
+    return this.http.post(this.baseUrl + 'post/addpost', post);
+  }
+
   sendLike(id: number, answerId: number) {
     return this.http.post(this.baseUrl + 'post/' + id + '/like/' + answerId, {});
   }

@@ -1,0 +1,122 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+      <div class="col-lg-8" *ngIf="!postId > 0">
+    <form [formGroup]="postForm" (ngSubmit)="addPost()">
+      <h4 class="text-center text-primary">Új poszt / kérdés</h4>
+      <hr>
+
+      <div class="form-group">
+        <input type="text" [ngClass]="{'is-invalid': postForm.get('title').errors && postForm.get('title').touched}" 
+          class="form-control" formControlName="title" placeholder="Kérdésed vagy a posztod címe">
+        <div class="invalid-feedback">Kérdés kötelező</div>
+      </div>
+      
+      <app-ngx-editor minHeight="340px"
+        [spellcheck]="false" 
+        [config]="editorConf" 
+        formControlName="postBody"
+        form="postForm"></app-ngx-editor>
+
+        <div class="form-group mb-0 pb-0">
+        <select form="postForm" formControlName="topicId" [ngClass]="{'is-invalid': postForm.get('topicId').errors && postForm.get('topicId').touched}" class="form-control">
+            <option value="" disabled>Válassz kategóriát</option>
+            <option *ngFor="let topic of topics" [value]="topic.id">{{topic.topicName}}</option>
+          </select>
+          <div class="invalid-feedback">Kategória kötelező</div>
+        </div>
+
+    </form>
+  </div>
+  <div class="col-lg-6" *ngIf="postId > 0" style="margin-top: 40px;">
+    
+      <div class="card border-success">
+    
+    
+          <div class="card-body">
+              <h4 class="card-title">Kép feltöltés</h4>
+          <div class="">
+          
+              
+          
+            <div ng2FileDrop
+                 [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                 (fileOver)="fileOverBase($event)"
+                 [uploader]="uploader"
+                 class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                 <i class="fa fa-upload fa-3x"></i>
+                Képeket húzd ide
+                <input type="file" ng2FileSelect [uploader]="uploader" multiple class="form-controll" /><br/>
+            </div>
+          </div>
+          
+          <div class="" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+          
+            <h6>Feltöltések</h6>
+            <p>Folyamatban: {{ uploader?.queue?.length }}</p>
+          
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Név</th>
+                    <th>Méret</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                </tr>
+                </tbody>
+            </table>
+          
+            <div>
+                <div>
+                    Feltöltés:
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success btn-s"
+                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="fa fa-upload"></span> Feltölt
+                </button>
+                <button type="button" class="btn btn-warning btn-s"
+                        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                    <span class="fa fa-ban"></span> Mégse
+                </button>
+                <button type="button" class="btn btn-danger btn-s"
+                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="fa fa-trash"></span> Töröl
+                </button>
+            </div>
+          
+          </div>
+          </div>
+          </div>
+
+          <div class="row justify-content-center">
+              <div class="form-group text-center" style="margin-top: 8px;">
+                  <button form="postForm" class="btn btn-success mr-2" type="submit" [routerLink]="['/detail/', postId]">Feltöltés kész, megtekintem a kérdésemet</button>
+                </div>
+          </div>
+        </div>
+      </div>
+
+  
+<div class="row justify-content-center" *ngIf="!postId > 0">
+    <div class="form-group text-center" style="margin-top: 8px;">
+        <button form="postForm" class="btn btn-success mr-2" [disabled]="!postForm.valid" type="submit" (click)="sendPost()">Mentés</button>
+        <button class="btn btn-outline-secondary" type="button" [routerLink]="['/home']">Mégse</button>
+      </div>
+</div>
+<div class="row justify-content-center" *ngIf="!postId > 0">
+    <div class="card border-light col-lg-8">
+        <div class="card-header"><small>Súgó és javaslatok</small></div>
+        <div class="card-body">
+          <p class="card-text text-primary text-sm"><small>Ha beküldöd posztodat az ittfelteheted.hu-ra, 
+            azzal érvényesnek ismered el és elfogadod a ittfelteheted.hu Általános Szerződési Feltételeit és Közösségi Irányelveit. </small></p>
+        </div>
+      </div>
+</div>
+
+    </div>

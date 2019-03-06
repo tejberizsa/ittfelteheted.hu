@@ -11,6 +11,7 @@ export interface Post {
     userPhotoUrl?: string;
     postBody?: string;
     userId?: number;
+    topicId?: number;
     topic?: Topic[];
     userName?: string;
     photoUrl?: string;

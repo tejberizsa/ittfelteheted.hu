@@ -3,8 +3,9 @@
 
 <div class="row wrapper">
   <div class="col-2 sidebar">
-    <div *ngFor="let topic of topics" class="btn-group-vertical" data-toggle="buttons">
-      <button type="button" class="btn btn-outline-light border-light text-primary text-left"><i [ngClass]="getTopicIcon(topic.icon)"></i>{{topic.topicName}}</button>
+    <div *ngFor="let topic of topics" class="btn-group-vertical btn-outline-info" data-toggle="buttons">
+      <button type="radio" role="option" class="btn btn-outline-secondary border-light text-primary text-left mark-active">
+          <i [ngClass]="getTopicIcon(topic.icon)"></i>{{topic.topicName}}</button>
     </div>
   </div>
 <div class="row col-10 content">

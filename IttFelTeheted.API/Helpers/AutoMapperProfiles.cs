@@ -51,6 +51,7 @@ namespace IttFelTeheted.API.Helpers
             CreateMap<PostedPhoto, PhotoForReturnDto>();
             CreateMap<UserPhoto, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, UserPhoto>();
+            CreateMap<PhotoForCreationDto, PostedPhoto>();
         }
     }
 }

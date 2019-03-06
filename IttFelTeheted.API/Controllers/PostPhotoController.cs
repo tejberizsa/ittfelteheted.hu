@@ -42,20 +42,17 @@ namespace IttFelTeheted.API.Controllers
         [Authorize]
         [HttpPost]
         [ServiceFilter(typeof(LogUserActivity))]
-        public async Task<IActionResult> AddPhoto(int userId, int postId, [FromForm]PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult> AddPhoto(int postId, [FromForm]PhotoForCreationDto photoForCreationDto)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var postFromRepo = await _repo.GetPostByID(postId);
             if (postFromRepo.User.Id != userId)
                 return Unauthorized();
 
-            var userFromRepo = await _repo.GetUser(userId);
-
             var file = photoForCreationDto.File;
             var path = $"C:\\PostPhotos\\";
-            var filename = $"{userId}_{DateTime.Now.ToString("yyMMddHHmmssff")}";
+            var filename = $"{postId}_{DateTime.Now.ToString("yyMMddHHmmssff")}";
             var extension = ".jpg";
 
             if (file.Length > 0)
@@ -73,7 +70,7 @@ namespace IttFelTeheted.API.Controllers
             photoForCreationDto.Url = $"http://localhost:5000/api/posts/{postId}/photos/link/{filename}";
             var photo = _mapper.Map<PostedPhoto>(photoForCreationDto);
 
-            if (!userFromRepo.Photos.Any(u => u.IsMain))
+            if (!postFromRepo.Photos.Any(u => u.IsMain))
                 photo.IsMain = true;
 
             postFromRepo.Photos.Add(photo);

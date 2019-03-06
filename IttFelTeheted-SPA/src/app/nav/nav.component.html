@@ -16,7 +16,10 @@
           <a class="nav-link" [routerLink]="['/lists']">Toplista</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active" >
-          <a class="nav-link text-info" [routerLink]="['/detail']">Egy véletlen kérdés</a>
+          <a class="nav-link text-info" [routerLink]="['/detail/', 0]">Egy véletlen kérdés</a>
+        </li>
+        <li class="nav-item mr-sm-4" routerLinkActive="active">
+          <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/addpost']">Új Kérdés</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active">
           <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
