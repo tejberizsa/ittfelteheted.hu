@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Post } from '../_models/post';
 import { Observable } from 'rxjs';
 import { Topic } from '../_models/topic';
 import { Answer } from '../_models/answer';
+import { PaginatedResult } from '../_models/pagination';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,27 @@ export class PostService {
 
 constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl + 'post/');
+  getPosts(page?, itemsPerPage?, queryString?) {
+    const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
+
+    let params = new HttpParams();
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+    if (queryString != null) {
+      params = params.append('queryString', queryString);
+    }
+    return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
   }
 
   getTopics(): Observable<Topic[]> {

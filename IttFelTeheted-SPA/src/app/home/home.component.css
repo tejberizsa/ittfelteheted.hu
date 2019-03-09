@@ -5,3 +5,7 @@
 .mark-active:focus i {
     color: red;
 }
+
+.mark-active:active i {
+    color: red;
+}

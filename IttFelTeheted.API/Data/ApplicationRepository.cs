@@ -68,16 +68,23 @@ namespace IttFelTeheted.API.Data
             return answer;
         }
 
-        public async Task<IEnumerable<Post>> GetPosts()
+        public async Task<PagedList<Post>> GetPosts(PageParams postParams)
         {
-            var posts = await _context.Posts
+            var posts = _context.Posts
                                 .Include(x => x.Topic)
                                 .Include(x => x.User)
                                 .Include(x => x.Answers)
                                 .Include(x => x.Photos)
                                 .Include(x => x.PostFollower)
-                                .OrderByDescending(x => x.Views).ToListAsync();
-            return posts;
+                                .OrderByDescending(x => x.Views).AsQueryable();
+            
+            if (postParams.TopicId != null)
+                posts = posts.Where(p => p.Topic.Id == postParams.TopicId.Value);
+
+            if (postParams.QueryString != null)
+                posts = posts.Where(p => p.Title.Contains(postParams.QueryString));
+            
+            return await PagedList<Post>.CreateAsync(posts, postParams.PageNumber, postParams.PageSize);
         }
 
         public async Task<Topic> GetTopic(int id)

@@ -7,6 +7,7 @@ using AutoMapper;
 using IttFelTeheted.API.Data;
 using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Models;
+using IttFelTeheted.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,9 +27,9 @@ namespace IttFelTeheted.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPosts()
+        public async Task<IActionResult> GetPosts([FromQuery]PageParams postParams)
         {
-            var posts = await _repo.GetPosts();
+            var posts = await _repo.GetPosts(postParams);
 
             var postsToReturn = _mapper.Map<IEnumerable<PostForListDto>>(posts);
 
@@ -38,6 +39,8 @@ namespace IttFelTeheted.API.Controllers
                 post.IsFollowedByCurrentUser = posts.First(p => p.Id == post.Id)
                                                     .PostFollower.Any(f => f.FollowerId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
             }
+
+            Response.AddPagination(posts.CurrentPage, posts.PageSize, posts.TotalCount, posts.TotalPages);
 
             return Ok(postsToReturn);
         }

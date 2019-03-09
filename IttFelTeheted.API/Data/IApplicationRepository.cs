@@ -12,7 +12,7 @@ namespace IttFelTeheted.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
-         Task<IEnumerable<Post>> GetPosts();
+         Task<PagedList<Post>> GetPosts(PageParams postParams);
          Task<Post> GetPostByID(int id, bool viewIt = false);
          Task<Post> GetPostByRandom();
          Task<Answer> GetAnswerByID(int id);
