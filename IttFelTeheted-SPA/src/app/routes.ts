@@ -16,6 +16,7 @@ import { MessagesResolver } from './_resolvers/messages.resolver';
 import { PostDetailResolver } from './_resolvers/post-detail.resolver';
 import { PostTrendingResolver } from './_resolvers/post-trending.resolver';
 import { QuestionAddComponent } from './question/question-add/question-add.component';
+import { MemberPostResolver } from './_resolvers/member-post.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent, resolve: {posts: PostListResolver, topics: TopicListResolver} },
@@ -30,7 +31,7 @@ export const appRoutes: Routes = [
             { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver } },
             { path: 'addpost', component: QuestionAddComponent, resolve: { topics: TopicListResolver } },
             { path: 'member/edit', component: MemberEditComponent, resolve: { user: MemberEditResolver } },
-            { path: 'member/:id', component: MemberDetailComponent, resolve: { user: MemberDetailResolver } }
+            { path: 'member/:id', component: MemberDetailComponent, resolve: { user: MemberDetailResolver, posts: MemberPostResolver } }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}

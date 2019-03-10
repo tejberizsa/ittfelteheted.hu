@@ -12,6 +12,7 @@ namespace IttFelTeheted.API.Helpers
         }
         
         public int? TopicId { get; set; }
+        public int? UserId { get; set; }
         public string QueryString { get; set; }
     }
 }

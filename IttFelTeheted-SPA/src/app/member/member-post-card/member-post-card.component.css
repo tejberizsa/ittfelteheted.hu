@@ -1,0 +1,29 @@
+.media {
+    cursor: pointer;
+}
+
+.media:hover img {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.media {
+    cursor: pointer;
+}
+
+.media img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+
+.media-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.text-smaller {
+    font-size: 0.75em;
+}

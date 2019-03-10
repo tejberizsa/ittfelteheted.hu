@@ -1,0 +1,15 @@
+<h4>Posztok és kérdések</h4>
+<div class="row">
+    <div *ngFor="let post of posts" class="mx-auto col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <app-member-post-card [memberPost]="post"></app-member-post-card>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <pagination [boundaryLinks]="true" 
+                [totalItems]="pagination.totalItems"
+                [itemsPerPage]="pagination.itemsPerPage"
+                [(ngModel)]="pagination.currentPage"
+                (pageChanged)="pageChanged($event)"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+  </div>

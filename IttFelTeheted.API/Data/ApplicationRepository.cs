@@ -83,6 +83,12 @@ namespace IttFelTeheted.API.Data
 
             if (postParams.QueryString != null)
                 posts = posts.Where(p => p.Title.Contains(postParams.QueryString));
+
+            if (postParams.UserId != null)
+            {
+                posts = posts.Where(p => p.User.Id == postParams.UserId.Value);
+                postParams.PageSize = 8;
+            }
             
             return await PagedList<Post>.CreateAsync(posts, postParams.PageNumber, postParams.PageSize);
         }

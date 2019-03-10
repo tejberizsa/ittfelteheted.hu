@@ -16,7 +16,7 @@ export class PostService {
 
 constructor(private http: HttpClient) { }
 
-  getPosts(page?, itemsPerPage?, queryString?) {
+  getPosts(page?, itemsPerPage?, queryString?, userId?) {
     const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
 
     let params = new HttpParams();
@@ -27,6 +27,34 @@ constructor(private http: HttpClient) { }
     if (queryString != null) {
       params = params.append('queryString', queryString);
     }
+    if (userId != null) {
+      params = params.append('userId', userId);
+    }
+
+    return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
+  getUserPosts(userId?, page?, itemsPerPage?) {
+    const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
+
+    let params = new HttpParams();
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+    if (userId != null) {
+      params = params.append('userId', userId);
+    }
+
     return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
       .pipe(
         map(response => {

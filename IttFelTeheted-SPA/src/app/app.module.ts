@@ -40,6 +40,9 @@ import { PostDetailResolver } from './_resolvers/post-detail.resolver';
 import { PostTrendingResolver } from './_resolvers/post-trending.resolver';
 import { TrendingCardComponent } from './question/trending-card/trending-card.component';
 import { QuestionAddComponent } from './question/question-add/question-add.component';
+import { MemberPostsComponent } from './member/member-posts/member-posts.component';
+import { MemberPostResolver } from './_resolvers/member-post.resolver';
+import { MemberPostCardComponent } from './member/member-post-card/member-post-card.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -64,7 +67,9 @@ export class MyIntl extends TimeagoIntl {
       MemberMessagesComponent,
       MemberPhotoEditorComponent,
       TrendingCardComponent,
-      QuestionAddComponent
+      QuestionAddComponent,
+      MemberPostsComponent,
+      MemberPostCardComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],
@@ -104,7 +109,8 @@ export class MyIntl extends TimeagoIntl {
       MemberEditResolver,
       MessagesResolver,
       PostDetailResolver,
-      PostTrendingResolver
+      PostTrendingResolver,
+      MemberPostResolver
    ],
    bootstrap: [
       AppComponent
