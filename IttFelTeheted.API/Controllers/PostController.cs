@@ -33,12 +33,22 @@ namespace IttFelTeheted.API.Controllers
 
             var postsToReturn = _mapper.Map<IEnumerable<PostForListDto>>(posts);
 
-            if (User.Identity.IsAuthenticated)
-            foreach (var post in postsToReturn)
+            if (User.Identity.IsAuthenticated && postParams.isFollowQuery == null)
             {
-                post.IsFollowedByCurrentUser = posts.First(p => p.Id == post.Id)
+                foreach (var post in postsToReturn)
+                {
+                    post.IsFollowedByCurrentUser = posts.First(p => p.Id == post.Id)
                                                     .PostFollower.Any(f => f.FollowerId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                }
             }
+            else 
+            {
+                foreach (var post in postsToReturn)
+                {
+                    post.IsFollowedByCurrentUser = false;
+                }
+            }
+            
 
             Response.AddPagination(posts.CurrentPage, posts.PageSize, posts.TotalCount, posts.TotalPages);
 
@@ -77,6 +87,7 @@ namespace IttFelTeheted.API.Controllers
         }
 
         [HttpPost("AddPost")]
+        [Authorize]
         public async Task<IActionResult> AddPost(PostForAddDto postForAddDto)
         {
             var userFromRepo = await _repo.GetUser(postForAddDto.UserId);

@@ -11,8 +11,9 @@ namespace IttFelTeheted.API.Helpers
             set { pageSize = (value > MaxPageSize) ? MaxPageSize : value;}
         }
         
+        public string QueryString { get; set; }
         public int? TopicId { get; set; }
         public int? UserId { get; set; }
-        public string QueryString { get; set; }
+        public bool? isFollowQuery { get; set; }
     }
 }

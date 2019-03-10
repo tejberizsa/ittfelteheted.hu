@@ -72,7 +72,7 @@ export class MemberDetailComponent implements OnInit {
   sendDisfollow() {
     this.userService.sendDisfollow(this.authService.decodedToken.nameid, this.user.id).subscribe(data => {
       this.user.isFollowedByCurrentUser = false;
-      this.alertify.success('Sikeres leiratkozás');
+      this.alertify.warning('Sikeres leiratkozás');
     }, error => {
       this.alertify.error(error);
     });

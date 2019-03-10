@@ -43,6 +43,11 @@ import { QuestionAddComponent } from './question/question-add/question-add.compo
 import { MemberPostsComponent } from './member/member-posts/member-posts.component';
 import { MemberPostResolver } from './_resolvers/member-post.resolver';
 import { MemberPostCardComponent } from './member/member-post-card/member-post-card.component';
+import { MemberFollowComponent } from './member/member-follow/member-follow.component';
+import { MemberInterestComponent } from './member/member-interest/member-interest.component';
+import { MemberFollowedPostResolver } from './_resolvers/member-followed-post.resolver';
+import { MemberFollowCardComponent } from './member/member-follow-card/member-follow-card.component';
+import { MemberFollowedUserResolver } from './_resolvers/member-followed-user.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -69,7 +74,10 @@ export class MyIntl extends TimeagoIntl {
       TrendingCardComponent,
       QuestionAddComponent,
       MemberPostsComponent,
-      MemberPostCardComponent
+      MemberPostCardComponent,
+      MemberFollowComponent,
+      MemberInterestComponent,
+      MemberFollowCardComponent
    ],
    imports: [
       [ BrowserModule, CollapseModule.forRoot()],
@@ -110,7 +118,9 @@ export class MyIntl extends TimeagoIntl {
       MessagesResolver,
       PostDetailResolver,
       PostTrendingResolver,
-      MemberPostResolver
+      MemberPostResolver,
+      MemberFollowedPostResolver,
+      MemberFollowedUserResolver
    ],
    bootstrap: [
       AppComponent

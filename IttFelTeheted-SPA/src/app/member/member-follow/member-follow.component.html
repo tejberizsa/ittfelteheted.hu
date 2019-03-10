@@ -1,0 +1,14 @@
+<div class="row">
+  <div *ngFor="let followedUser of followedUsers" class="mx-auto col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <app-member-follow-card [followedUser]="followedUser"></app-member-follow-card>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination [boundaryLinks]="true" 
+              [totalItems]="userPagination.totalItems"
+              [itemsPerPage]="userPagination.itemsPerPage"
+              [(ngModel)]="userPagination.currentPage"
+              (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [maxSize]=8 [rotate]="true">
+</pagination>
+</div>

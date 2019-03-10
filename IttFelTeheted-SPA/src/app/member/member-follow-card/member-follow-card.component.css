@@ -1,0 +1,21 @@
+.rounded-circle {
+    height: 60px;
+    width: 60px;
+}
+
+.add-pointer {
+    cursor: pointer;
+}
+
+.imgwrap:hover img {
+    transform: scale(1.1, 1.1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.imgwrap span img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}

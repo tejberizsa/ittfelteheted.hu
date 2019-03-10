@@ -44,7 +44,7 @@ export class QuestionCardComponent implements OnInit {
     }
     this.postService.sendDisfollow(this.authService.decodedToken.nameid, this.post.id).subscribe(data => {
       this.post.isFollowedByCurrentUser = false;
-      this.alertify.message('Sikeres leiratkozás');
+      this.alertify.warning('Sikeres leiratkozás');
     }, error => {
       this.alertify.error(error);
     });

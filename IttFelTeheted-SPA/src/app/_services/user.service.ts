@@ -22,6 +22,29 @@ constructor(private http: HttpClient) { }
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
 
+  getFollowedUsers(id: number, page?, itemsPerPage?) {
+    const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
+
+    let params = new HttpParams();
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+    params = params.append('UserId', id.toString());
+
+    return this.http.get<User[]>(this.baseUrl + 'users/followed', {observe: 'response', params})
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
   getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
     const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
 

@@ -43,7 +43,7 @@ constructor(private http: HttpClient) { }
       );
   }
 
-  getUserPosts(userId?, page?, itemsPerPage?) {
+  getUserPosts(userId, page?, itemsPerPage?) {
     const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
 
     let params = new HttpParams();
@@ -51,9 +51,30 @@ constructor(private http: HttpClient) { }
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
-    if (userId != null) {
-      params = params.append('userId', userId);
+    params = params.append('userId', userId);
+
+    return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
+  getFollowedPosts(userId, isFollowQuery, page?, itemsPerPage?) {
+    const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
+
+    let params = new HttpParams();
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
     }
+    params = params.append('userId', userId);
+    params = params.append('isFollowQuery', isFollowQuery);
 
     return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
       .pipe(

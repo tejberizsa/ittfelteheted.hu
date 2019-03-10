@@ -78,13 +78,26 @@ namespace IttFelTeheted.API.Data
                                 .Include(x => x.PostFollower)
                                 .OrderByDescending(x => x.Views).AsQueryable();
             
+            if (postParams.isFollowQuery != null)
+            {
+                posts = _context.Posts
+                        .FromSql("SELECT Posts.* FROM Posts JOIN PostFollows ON Posts.Id=PostFollows.FollowedId WHERE PostFollows.FollowerId={0}", postParams.UserId)
+                                .Include(x => x.Topic)
+                                .Include(x => x.User)
+                                .Include(x => x.Answers)
+                                .Include(x => x.Photos)
+                                .Include(x => x.PostFollower)
+                                .OrderByDescending(x => x.Views).AsQueryable();
+                postParams.PageSize = 8;
+            }
+            
             if (postParams.TopicId != null)
                 posts = posts.Where(p => p.Topic.Id == postParams.TopicId.Value);
 
             if (postParams.QueryString != null)
                 posts = posts.Where(p => p.Title.Contains(postParams.QueryString));
 
-            if (postParams.UserId != null)
+            if (postParams.UserId != null && postParams.isFollowQuery == null)
             {
                 posts = posts.Where(p => p.User.Id == postParams.UserId.Value);
                 postParams.PageSize = 8;
@@ -114,10 +127,16 @@ namespace IttFelTeheted.API.Data
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(PageParams userParams)
         {
-            var users = await _context.Users.ToListAsync();
-            return users;
+            var users = _context.Users.AsQueryable();
+            if (userParams.UserId != null)
+                users = _context.Users
+                        .FromSql("SELECT Users.* FROM Users JOIN UserFollows ON Users.Id=UserFollows.FollowedId WHERE UserFollows.FollowerId={0}", userParams.UserId)
+                        .Include(u => u.Photos)
+                        .OrderByDescending(x => x.Username).AsQueryable();
+            userParams.PageSize = 18;
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
