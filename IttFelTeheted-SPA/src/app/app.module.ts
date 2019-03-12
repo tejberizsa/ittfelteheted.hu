@@ -9,6 +9,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } from 'ngx-timeago';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -49,6 +50,31 @@ import { MemberFollowedPostResolver } from './_resolvers/member-followed-post.re
 import { MemberFollowCardComponent } from './member/member-follow-card/member-follow-card.component';
 import { MemberFollowedUserResolver } from './_resolvers/member-followed-user.resolver';
 import { PolicyComponent } from './policy/policy.component';
+import { environment } from 'src/environments/environment';
+
+
+const cookieConfig: NgcCookieConsentConfig = {
+   cookie: {
+     domain: environment.domain
+   },
+   palette: {
+     popup: {
+       background: '#000'
+     },
+     button: {
+       background: '#f1d600'
+     }
+   },
+   theme: 'classic',
+   type: 'info',
+   'content': {
+      'message': 'A weboldalon cookie-kat használok annak érdekében, hogy a lehető legjobb felhasználói élményt nyújtsam.',
+      'dismiss': 'OK, elfogadom',
+      'deny': 'Refuse cookies',
+      'link': 'Bővebben az adatvédelemről',
+      'href': 'http://ittfelteheted.hu/policy',
+      'policy': 'Adatvédelmi irányelvek' }
+ };
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -93,6 +119,7 @@ export class MyIntl extends TimeagoIntl {
          FileUploadModule,
          NgxEditorModule,
          PaginationModule.forRoot(),
+         NgcCookieConsentModule.forRoot(cookieConfig),
          TimeagoModule.forRoot({
             intl: { provide: TimeagoIntl, useClass: MyIntl },
             formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },

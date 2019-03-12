@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
 import { Topic } from '../_models/topic';
 import { Pagination, PaginatedResult } from '../_models/pagination';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
