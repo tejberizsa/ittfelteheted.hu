@@ -65,7 +65,7 @@ namespace IttFelTeheted.API.Controllers
                 }
             }
             
-            photoForCreationDto.Url = $"http://localhost:5000/api/users/{userId}/photos/link/{filename}";
+            photoForCreationDto.Url = $"http://ittfelteheted.hu/api/users/{userId}/photos/link/{filename}";
             var photo = _mapper.Map<UserPhoto>(photoForCreationDto);
 
             if (!userFromRepo.Photos.Any(u => u.IsMain))

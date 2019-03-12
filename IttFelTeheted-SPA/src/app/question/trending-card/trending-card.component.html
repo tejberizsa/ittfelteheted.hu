@@ -3,7 +3,7 @@
           <h5>{{trending.title}}</h5>
           <img *ngIf="trending.photoUrl != null" style="height: 200px; width: 100%; display: block;" class="card-img-top" src="{{trending.photoUrl}}">
       </div>
-      <div class="text-muted"><i class="fa fa-user ml-2 mr-2"></i>{{ trending.username | titlecase }} {{trending.dateAdded | timeago}} 
+      <div class="text-muted"><i class="fa fa-user ml-2 mr-2"></i>{{ trending.userName | titlecase }} {{trending.dateAdded | timeago}} 
         <i class="fa fa-eye ml-3 mr-2"></i>{{trending.views}}
         <i class="fa fa-comments ml-3 mr-2"></i>{{trending.answerCount}}</div>
 </div>

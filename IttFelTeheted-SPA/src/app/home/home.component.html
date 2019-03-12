@@ -1,29 +1,34 @@
+<div class="container-fluid">
 <div class="row wrapper">
-  <div class="col-2 sidebar">
+  <!-- <div class="col-2 sidebar">
     <ul class="btn-group btn-group-vertical btn-group-toggle navbar-nav" data-toggle="buttons">
       <li *ngFor="let topic of topics" type="radio" class="btn btn-outline-secondary border-light text-primary text-left mark-active nav-item">
           <i class="nav-link" [ngClass]="getTopicIcon(topic.icon)"></i>{{topic.topicName}}</li>
     </ul>
-  </div>
-<div class="row col-10 content">
-    <div class="container mt-3">
-        <form #queryForm="ngForm" (ngSubmit)="loadPosts()" class="input-group justify-content-center" novalidate>
-            <input type="text" class="form-control" [(ngModel)]="this.queryString" placeholder="Keresés" [ngModelOptions]="{standalone: true}">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">
-                <i class="fa fa-search"></i>
-              </button>
-            </div>
-          </form>
-          <br/>
+  </div> -->
+<div class="col-8 offset-2 content">
+  <div class="row justify-content-md-center">
+    <div class="col-10 mt-3">
+      <form #queryForm="ngForm" (ngSubmit)="loadPosts()" class="input-group justify-content-center" novalidate>
+          <input type="text" class="form-control" [(ngModel)]="this.queryString" placeholder="Keresés" [ngModelOptions]="{standalone: true}">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+      </form>
+      <br/>
     </div>
     <br/>
-    <div class="row">
-    <div *ngFor="let post of posts" class="mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
-        <app-question-card [post]="post"></app-question-card>
-    </div>
   </div>
+
 </div>
+</div>
+<div class="row justify-content-md-center">
+    <div *ngFor="let post of posts" class="mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
+      <app-question-card [post]="post"></app-question-card>
+    </div>
+    </div>
 </div>
 
 <div class="d-flex justify-content-center">

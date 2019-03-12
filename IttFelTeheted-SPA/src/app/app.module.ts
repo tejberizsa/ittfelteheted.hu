@@ -48,6 +48,7 @@ import { MemberInterestComponent } from './member/member-interest/member-interes
 import { MemberFollowedPostResolver } from './_resolvers/member-followed-post.resolver';
 import { MemberFollowCardComponent } from './member/member-follow-card/member-follow-card.component';
 import { MemberFollowedUserResolver } from './_resolvers/member-followed-user.resolver';
+import { PolicyComponent } from './policy/policy.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -56,74 +57,75 @@ export class MyIntl extends TimeagoIntl {
    // do extra stuff here...
    }
 
-@NgModule({
-   declarations: [
-      AppComponent,
-      NavComponent,
-      HomeComponent,
-      RegisterComponent,
-      ListsComponent,
-      MessagesComponent,
-      QuestionDetailComponent,
-      AnswerComponent,
-      QuestionCardComponent,
-      MemberDetailComponent,
-      MemberEditComponent,
-      MemberMessagesComponent,
-      MemberPhotoEditorComponent,
-      TrendingCardComponent,
-      QuestionAddComponent,
-      MemberPostsComponent,
-      MemberPostCardComponent,
-      MemberFollowComponent,
-      MemberInterestComponent,
-      MemberFollowCardComponent
-   ],
-   imports: [
-      [ BrowserModule, CollapseModule.forRoot()],
-      HttpClientModule,
-      ReactiveFormsModule,
-      FormsModule,
-      BsDropdownModule.forRoot(),
-      TabsModule.forRoot(),
-      RouterModule.forRoot(appRoutes),
-      NgxGalleryModule,
-      FileUploadModule,
-      NgxEditorModule,
-      PaginationModule.forRoot(),
-      TimeagoModule.forRoot({
-         intl: { provide: TimeagoIntl, useClass: MyIntl },
-         formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
-       }),
-      JwtModule.forRoot({
-         config: {
-            tokenGetter: tokenGetter,
-            whitelistedDomains: ['localhost:5000'],
-            blacklistedRoutes: ['localhost:5000/api/auth']
-         }
-      })
-   ],
-   providers: [
-      AuthService,
-      ErrorInterceptorProvider,
-      AlertifyService,
-      AuthGuard,
-      RegisterGuard,
-      PostService,
-      UserService,
-      MemberDetailResolver,
-      PostListResolver,
-      TopicListResolver,
-      MemberEditResolver,
-      MessagesResolver,
-      PostDetailResolver,
-      PostTrendingResolver,
-      MemberPostResolver,
-      MemberFollowedPostResolver,
-      MemberFollowedUserResolver
-   ],
-   bootstrap: [
-      AppComponent
-   ]
-})
-export class AppModule { }
+   @NgModule({
+      declarations: [
+         AppComponent,
+         NavComponent,
+         HomeComponent,
+         RegisterComponent,
+         ListsComponent,
+         MessagesComponent,
+         QuestionDetailComponent,
+         AnswerComponent,
+         QuestionCardComponent,
+         MemberDetailComponent,
+         MemberEditComponent,
+         MemberMessagesComponent,
+         MemberPhotoEditorComponent,
+         TrendingCardComponent,
+         QuestionAddComponent,
+         MemberPostsComponent,
+         MemberPostCardComponent,
+         MemberFollowComponent,
+         MemberInterestComponent,
+         MemberFollowCardComponent,
+         PolicyComponent
+      ],
+      imports: [
+         [ BrowserModule, CollapseModule.forRoot()],
+         HttpClientModule,
+         ReactiveFormsModule,
+         FormsModule,
+         BsDropdownModule.forRoot(),
+         TabsModule.forRoot(),
+         RouterModule.forRoot(appRoutes),
+         NgxGalleryModule,
+         FileUploadModule,
+         NgxEditorModule,
+         PaginationModule.forRoot(),
+         TimeagoModule.forRoot({
+            intl: { provide: TimeagoIntl, useClass: MyIntl },
+            formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+          }),
+         JwtModule.forRoot({
+            config: {
+               tokenGetter: tokenGetter,
+               whitelistedDomains: ['localhost:5000'],
+               blacklistedRoutes: ['localhost:5000/api/auth']
+            }
+         })
+      ],
+      providers: [
+         AuthService,
+         ErrorInterceptorProvider,
+         AlertifyService,
+         AuthGuard,
+         RegisterGuard,
+         PostService,
+         UserService,
+         MemberDetailResolver,
+         PostListResolver,
+         TopicListResolver,
+         MemberEditResolver,
+         MessagesResolver,
+         PostDetailResolver,
+         PostTrendingResolver,
+         MemberPostResolver,
+         MemberFollowedPostResolver,
+         MemberFollowedUserResolver
+      ],
+      bootstrap: [
+         AppComponent
+      ]
+   })
+   export class AppModule { }

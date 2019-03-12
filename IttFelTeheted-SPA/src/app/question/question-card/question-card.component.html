@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div class="card mb-3 question-card">
   <h5 class="card-header"  [routerLink]="['/detail/', post.id]">{{post.title}}</h5>
   <div class="card-body">
     <h6 class="card-text" [innerHTML]="post.postBody" [routerLink]="['/detail/', post.id]"></h6>
@@ -17,7 +17,7 @@
   <img style="height: 200px; width: 100%; display: block;" class="card-img-top" src="{{post.photoUrl}}">
   </div>
   <div class="card-footer text-muted" [routerLink]="['/detail/', post.id]">
-    <div><i class="fa fa-user mr-2"></i>{{ post.username | titlecase }} {{post.dateAdded | timeago}} </div>
+    <div><i class="fa fa-user mr-2"></i>{{ post.userName | titlecase }} {{post.dateAdded | timeago}} </div>
     <div><i class="fa fa-eye mr-2"></i>{{post.views}} megtekintés </div>
     <div><i class="fa fa-comments mr-2"></i>{{post.answerCount}} válasz</div>
   </div>

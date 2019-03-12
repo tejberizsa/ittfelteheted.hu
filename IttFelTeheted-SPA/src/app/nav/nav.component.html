@@ -19,10 +19,10 @@
           <a class="nav-link text-info" [routerLink]="['/detail/', 0]">Egy véletlen kérdés</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active">
-          <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/addpost']">Új Kérdés</a>
+          <a class="nav-link" [routerLink]="['/addpost']">Új Kérdés</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active">
-          <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
+          <a class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
         </li>
       </ul>
   
@@ -32,6 +32,9 @@
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Profil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/policy']"><i class="fa fa-info-circle"></i> Adatvédelem</a>
+          <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Kijelentkezek</a>
         </div>

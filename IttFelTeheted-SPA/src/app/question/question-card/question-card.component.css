@@ -39,3 +39,7 @@
 .animate {
     transition: all 0.3s ease-in-out;
 }
+
+.question-card {
+    min-width: 240px;
+}

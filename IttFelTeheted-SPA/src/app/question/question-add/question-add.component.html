@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
-      <div class="col-lg-8" *ngIf="!postId > 0">
+      <div class="col-lg-8" *ngIf="!(postId > 0)">
     <form [formGroup]="postForm" (ngSubmit)="addPost()">
       <h4 class="text-center text-primary">Új poszt / kérdés</h4>
       <hr>
@@ -96,20 +96,21 @@
 
           <div class="row justify-content-center">
               <div class="form-group text-center" style="margin-top: 8px;">
-                  <button form="postForm" class="btn btn-success mr-2" type="submit" [routerLink]="['/detail/', postId]">Feltöltés kész, megtekintem a kérdésemet</button>
+                  <button form="postForm" class="btn btn-success mr-2" [disabled]="uploader?.queue?.length" type="submit" 
+                  [routerLink]="['/detail/', postId]">Feltöltés kész, megtekintem a kérdésemet</button>
                 </div>
           </div>
         </div>
       </div>
 
   
-<div class="row justify-content-center" *ngIf="!postId > 0">
+<div class="row justify-content-center" *ngIf="!(postId > 0)">
     <div class="form-group text-center" style="margin-top: 8px;">
         <button form="postForm" class="btn btn-success mr-2" [disabled]="!postForm.valid" type="submit" (click)="sendPost()">Mentés</button>
         <button class="btn btn-outline-secondary" type="button" [routerLink]="['/home']">Mégse</button>
       </div>
 </div>
-<div class="row justify-content-center" *ngIf="!postId > 0">
+<div class="row justify-content-center" *ngIf="!(postId > 0)">
     <div class="card border-light col-lg-8">
         <div class="card-header"><small>Súgó és javaslatok</small></div>
         <div class="card-body">

@@ -3,7 +3,7 @@
       <h6>{{memberPost.title}}</h6>
       <img *ngIf="memberPost.photoUrl != null" style="height: 150px; width: 100%; display: block;" class="card-img-top" src="{{memberPost.photoUrl}}">
   </div>
-  <div class="text-muted text-smaller"><i class="fa fa-user ml-1 mr-1"></i>{{ memberPost.username | titlecase }} {{memberPost.dateAdded | timeago}} 
+  <div class="text-muted text-smaller"><i class="fa fa-user ml-1 mr-1"></i>{{ memberPost.userName | titlecase }} {{memberPost.dateAdded | timeago}} 
     <i class="fa fa-eye ml-2 mr-1"></i>{{memberPost.views}}
     <i class="fa fa-comments ml-2 mr-1"></i>{{memberPost.answerCount}}</div>
 </div>
