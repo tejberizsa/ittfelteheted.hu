@@ -13,6 +13,7 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FacebookModule } from 'ngx-facebook';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -125,6 +126,7 @@ export class MyIntl extends TimeagoIntl {
          FileUploadModule,
          NgxEditorModule,
          PaginationModule.forRoot(),
+         FacebookModule.forRoot(),
          NgcCookieConsentModule.forRoot(cookieConfig),
          TimeagoModule.forRoot({
             intl: { provide: TimeagoIntl, useClass: MyIntl },

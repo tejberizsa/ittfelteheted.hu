@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   pagination: Pagination;
   queryString: string;
   opened: boolean;
+  filterByTopic: number;
 
   constructor(private authService: AuthService, private postService: PostService,
     private route: ActivatedRoute, private alertify: AlertifyService) { }
@@ -32,13 +33,19 @@ export class HomeComponent implements OnInit {
   }
 
   loadPosts() {
-    this.postService.getPosts(this.pagination.currentPage, this.pagination.itemsPerPage, this.queryString)
+    this.postService.getPosts(this.pagination.currentPage, this.pagination.itemsPerPage, this.queryString, null, this.filterByTopic)
     .subscribe((res: PaginatedResult<Post[]>) => {
         this.posts = res.result;
         this.pagination = res.pagination;
       }, error => {
         this.alertify.error(error);
       });
+  }
+
+  loadByTopic(topicId: number) {
+    this.filterByTopic = topicId;
+    this.loadPosts();
+    this.opened = !this.opened;
   }
 
   pageChanged(event: any): void {

@@ -19,6 +19,7 @@ export class QuestionDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   newAnswer: any = {};
   editorConfig: any;
+  shareUrl: string;
 
   constructor(private postService: PostService, private alertify: AlertifyService,
     private route: ActivatedRoute, private authService: AuthService) { }
@@ -28,6 +29,7 @@ export class QuestionDetailComponent implements OnInit {
       this.post = data['post'];
       this.post.answers.sort((a, b) => b.like - a.like);
       this.trendings = data['trendings'];
+      this.galleryImages = this.getImages();
     });
 
     this.galleryOptions = [
@@ -40,7 +42,6 @@ export class QuestionDetailComponent implements OnInit {
         preview: false
       }
     ];
-    this.galleryImages = this.getImages();
 
     this.editorConfig = {
       editable: true,

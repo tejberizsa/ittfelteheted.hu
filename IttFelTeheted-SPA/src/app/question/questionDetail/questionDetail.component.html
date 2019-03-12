@@ -40,7 +40,9 @@
             <ngx-gallery *ngIf="galleryImages.length > 0" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
             <div class="row">
               <div class="col-3 text-secondary"><i class="fa fa-eye mr-2 ml-2"></i>{{post.views}} megtekintés</div>
-              <div class="offset-6 col-3 text-secondary"><i class="fa fa-clock-o mr-2"></i> {{post.dateAdded | timeago}} </div>
+              <div class="col-1">
+              </div>
+              <div class="offset-5 col-3 text-secondary"><i class="fa fa-clock-o mr-2"></i> {{post.dateAdded | timeago}} </div>
             </div>
         </div>
         <div *ngFor="let answer of post.answers" class="mx-auto">

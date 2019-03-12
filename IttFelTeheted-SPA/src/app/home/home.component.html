@@ -1,16 +1,17 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+<mat-sidenav-container style="min-height: 972px;" >
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="overflow-x:hidden;">
       <div style="width: 280px;">
           <div class="sidebar">
               <ul class="btn-group btn-group-vertical btn-group-toggle navbar-nav" data-toggle="buttons">
-                <li *ngFor="let topic of topics" type="radio" class="btn btn-outline-secondary border-light text-primary text-left mark-active nav-item">
-                    <i class="nav-link" [ngClass]="getTopicIcon(topic.icon)"></i>{{topic.topicName}}</li>
+                <li *ngFor="let topic of topics" type="radio" (click)="loadByTopic(topic.id)"
+                    class="btn btn-outline-secondary border-light text-primary text-left mark-active nav-item">
+                    <i class="nav-link" [ngClass]="getTopicIcon(topic.icon)" ></i>{{topic.topicName}}</li>
               </ul>
             </div>
     </div>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content style="overflow-y:hidden;">
 <div class="container-fluid">
     <button mat-button (click)="sidenav.toggle()" class="hamburger" [ngClass]="opened ? 'is-open' : 'is-closed'" data-toggle="offcanvas">
         <span class="hamb-top"></span>
@@ -38,7 +39,7 @@
 </div>
 </div>
 <div class="row justify-content-md-center" [ngClass]="opened ? 'wrapper-inactive' : 'wrapper'">
-    <div *ngFor="let post of posts" class="mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
+    <div *ngFor="let post of posts" class="ml-20 mx-auto col-sm-6 col-md-4 col-lg-4 col-xl-2">
       <app-question-card [post]="post"></app-question-card>
     </div>
     </div>

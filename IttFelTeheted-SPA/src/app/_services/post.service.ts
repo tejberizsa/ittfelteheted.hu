@@ -16,7 +16,7 @@ export class PostService {
 
 constructor(private http: HttpClient) { }
 
-  getPosts(page?, itemsPerPage?, queryString?, userId?) {
+  getPosts(page?, itemsPerPage?, queryString?, userId?, topicId?) {
     const paginatedResult: PaginatedResult<Post[]> = new PaginatedResult<Post[]>();
 
     let params = new HttpParams();
@@ -29,6 +29,9 @@ constructor(private http: HttpClient) { }
     }
     if (userId != null) {
       params = params.append('userId', userId);
+    }
+    if (topicId != null) {
+      params = params.append('topicId', topicId);
     }
 
     return this.http.get<Post[]>(this.baseUrl + 'post/', {observe: 'response', params})
