@@ -9,7 +9,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } from 'ngx-timeago';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
-import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -110,6 +113,9 @@ export class MyIntl extends TimeagoIntl {
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],
          HttpClientModule,
+         MatSidenavModule,
+         MatListModule,
+         BrowserAnimationsModule,
          ReactiveFormsModule,
          FormsModule,
          BsDropdownModule.forRoot(),
@@ -155,4 +161,4 @@ export class MyIntl extends TimeagoIntl {
          AppComponent
       ]
    })
-   export class AppModule { }
+export class AppModule { }

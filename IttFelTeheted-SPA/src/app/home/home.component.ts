@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   topics: Topic[];
   pagination: Pagination;
   queryString: string;
+  opened: boolean;
 
   constructor(private authService: AuthService, private postService: PostService,
     private route: ActivatedRoute, private alertify: AlertifyService) { }
@@ -40,14 +41,14 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  getTopicIcon(topicIcon: string) {
-    return topicIcon + ' mr-4';
-  }
-
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
     this.loadPosts();
     window.scrollTo(0, 0);
+  }
+
+  getTopicIcon(topicIcon: string) {
+    return topicIcon + ' mr-4';
   }
 
 }
