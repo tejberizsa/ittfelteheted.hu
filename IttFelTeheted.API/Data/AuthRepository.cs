@@ -69,5 +69,13 @@ namespace IttFelTeheted.API.Data
 
             return false;
         }
+
+        public async Task<bool> EMailExists(string email)
+        {
+            if (await _context.Users.AnyAsync(x => x.EMail == email))
+                return true;
+
+            return false;
+        }
     }
 }

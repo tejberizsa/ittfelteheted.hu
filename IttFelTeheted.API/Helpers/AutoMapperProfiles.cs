@@ -9,12 +9,16 @@ namespace IttFelTeheted.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<UserForRegisterDto, User>();
+            CreateMap<UserForRegisterDto, User>()
+                .ForMember(u => u.EMailConfirmed, opt => opt.Equals(false))
+                .ForMember(u => u.Deleted, opt => opt.Equals(false));
             CreateMap<User, UserForListDto>()
                 .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(u => u.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url));
-            CreateMap<UserForUpdateDto, User>();
+            CreateMap<UserForUpdateDto, User>()
+                .ForMember(u => u.EMailConfirmed, opt => opt.Equals(false))
+                .ForMember(u => u.Deleted, opt => opt.Equals(false));
 
             CreateMap<AnswerForAddDto, Answer>();
             CreateMap<Answer, AnswerForDetailedDto>()

@@ -16,6 +16,9 @@ namespace IttFelTeheted.API.Models
         public ICollection<UserPhoto> Photos { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime LastActive { get; set; }
+        public DateTime? ConfirmationEmailSent { get; set; }
+        public bool EMailConfirmed { get; set; }
+        public bool Deleted { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
         public ICollection<Vote> Voted { get; set; }
