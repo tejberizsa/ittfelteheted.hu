@@ -1,0 +1,14 @@
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Release\netcoreapp2.1\IttFelTeheted.API.deps.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Release\netcoreapp2.1\IttFelTeheted.API.runtimeconfig.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Release\netcoreapp2.1\IttFelTeheted.API.runtimeconfig.dev.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Release\netcoreapp2.1\IttFelTeheted.API.dll
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Release\netcoreapp2.1\IttFelTeheted.API.pdb
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.csprojAssemblyReference.cache
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.csproj.CoreCompileInputs.cache
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.RazorAssemblyInfo.cache
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.RazorAssemblyInfo.cs
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.AssemblyInfoInputs.cache
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.AssemblyInfo.cs
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.RazorTargetAssemblyInfo.cache
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.dll
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Release\netcoreapp2.1\IttFelTeheted.API.pdb
