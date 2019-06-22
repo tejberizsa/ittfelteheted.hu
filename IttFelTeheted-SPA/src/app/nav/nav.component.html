@@ -12,22 +12,25 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse collapse" [collapse]=isCollapsed>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item mr-sm-4" routerLinkActive="active">
+        <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/lists']">Toplista</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active" >
           <a class="nav-link text-info" [routerLink]="['/detail/', 0]">Egy véletlen kérdés</a>
         </li>
-        <li class="nav-item mr-sm-4" routerLinkActive="active">
+        <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/addpost']">Új Kérdés</a>
         </li>
-        <li class="nav-item mr-sm-4" routerLinkActive="active">
+        <li *ngIf="!loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/register']">Új Kérdés</a>
+        </li>
+        <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
         </li>
       </ul>
-  
-      <div *ngIf="loggedIn()" class="dropdown mr-4" dropdown>
-        <a class="text-light dropdown-toggle" dropdownToggle>
+      
+      <div *ngIf="loggedIn()" class="dropdown mr-8" dropdown>
+        <a class="text-light dropdown-toggle" dropdownToggle >
           Üdvözlet {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
@@ -46,10 +49,10 @@
           placeholder="Felhasználó" required [(ngModel)]="model.username">
         <input class="form-control mr-sm-2" type="password" name="password" 
           placeholder="Jelszó" required [(ngModel)]="model.password">
-        <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit">Bejelentkezek</button>
+        <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Bejelentkezek</button>
+        <button *ngIf="!loggedIn()" [routerLink]="['/register']" class="btn btn-info my-2 my-sm-0 ml-2" type="button">Regisztrálok</button>
       </form>
     </div>
-    <button *ngIf="!loggedIn()" [routerLink]="['/register']" class="btn btn-info my-2 my-sm-0" type="submit">Regisztrálok</button>
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
