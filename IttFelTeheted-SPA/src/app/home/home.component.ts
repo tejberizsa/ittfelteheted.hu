@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   opened: boolean;
   filterByTopic: number;
 
-  constructor(private authService: AuthService, private postService: PostService,
+  constructor(private postService: PostService,
     private route: ActivatedRoute, private alertify: AlertifyService) { }
 
   ngOnInit() {

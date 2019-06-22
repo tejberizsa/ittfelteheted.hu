@@ -46,7 +46,9 @@ namespace IttFelTeheted.API.Data
         public async Task<Post> GetPostByRandom()
         {
             Random rand = new Random();
-            var skip = (int)(rand.NextDouble() * _context.Posts.Count());
+            var postCount = await _context.Posts.CountAsync();
+            var skip = rand.Next(1, postCount);
+            // var skip = (int)(rand.NextDouble() * _context.Posts.Count());
             var post = await _context.Posts
                                     .Include(x => x.Topic)
                                     .Include(x => x.User).ThenInclude(u => u.Photos)
@@ -57,6 +59,7 @@ namespace IttFelTeheted.API.Data
                                     .FirstOrDefaultAsync();
             post.Views++;
             await SaveAll();
+            
 
             return post;
         }

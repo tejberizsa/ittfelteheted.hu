@@ -148,17 +148,20 @@ namespace IttFelTeheted.API.Controllers
         [HttpGet("trending/{id}")]
         public async Task<IActionResult> GetTrendingPosts(int id)
         {
+            Post basePost;
             if (id == 0)
             {
-                Random rand = new Random();
-                id = (int)(rand.NextDouble() * 30);
+                basePost = await _repo.GetPostByRandom();
             }
-            var baseTopic = await _repo.GetPostByID(id);
+            else
+            {
+                basePost = await _repo.GetPostByID(id);
+            }
 
-            if (baseTopic == null)
+            if (basePost == null)
                 return BadRequest("Poszt nem elérhető");
 
-            var trendingPosts = await _repo.GetTrendingPosts(id, baseTopic.Topic.Id);
+            var trendingPosts = await _repo.GetTrendingPosts(id, basePost.Topic.Id);
 
             var result = _mapper.Map<IEnumerable<PostForTrendingDto>>(trendingPosts);
 
