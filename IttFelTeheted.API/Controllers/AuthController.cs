@@ -36,7 +36,7 @@ namespace IttFelTeheted.API.Controllers
             if (await _repo.UserExists(userForRegisterDto.Username))
                 return BadRequest("Már van ilyen nevű felhasználó!");
 
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            if (await _repo.EMailExists(userForRegisterDto.EMail))
                 return BadRequest("E-mail cím már használatban van!");
 
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
@@ -46,6 +46,42 @@ namespace IttFelTeheted.API.Controllers
             var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
 
             return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
+        }
+
+        [HttpPost("confirm")]
+        public async Task<IActionResult> Confirm(UserForConfirmDto userForConfirmDto)
+        {
+            var userFromRepo = await _repo.ConfirmEmail(userForConfirmDto);
+
+            if (userFromRepo == null)
+                return BadRequest("E-mail visszaigazolás sikertelen");
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
+                new Claim(ClaimTypes.Name, userFromRepo.Username)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(45),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token)
+            });
         }
 
         [HttpPost("login")]
@@ -76,7 +112,7 @@ namespace IttFelTeheted.API.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
+                Expires = DateTime.Now.AddDays(45),
                 SigningCredentials = creds
             };
 

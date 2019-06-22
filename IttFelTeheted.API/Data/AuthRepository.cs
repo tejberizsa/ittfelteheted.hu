@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,21 +10,51 @@ namespace IttFelTeheted.API.Data
     public class AuthRepository : IAuthRepository
     {
         private readonly DataContext _context;
+        private Random random;
         public AuthRepository(DataContext context)
         {
             _context = context;
-
+            random = new Random();
         }
+
+        private string randomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            // return new string(Enumerable.Repeat(chars, length)
+            //                                         .Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Range(1, length).Select(_ => chars[random.Next(chars.Length)]).ToArray());
+        }
+        
         public async Task<User> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username.ToLower());
+            var users = await _context.Users.Where(x => x.Username == username.ToLower()).ToListAsync();
 
+            if (users == null)
+                return null;
+
+            foreach (var user in users) 
+            {
+                if(VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                    return user;
+            }
+
+            return null;
+        }
+
+        public async Task<User> ConfirmEmail(UserForConfirmDto userToConfirm)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == Int32.Parse(userToConfirm.Id));
             if (user == null)
                 return null;
-
-            if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            
+            if (user.EMailConfirmed)
                 return null;
 
+            if (user.ConfirmKey != userToConfirm.ConfirmKey)
+                return null;
+
+            user.EMailConfirmed = true;
+            await _context.SaveChangesAsync();
             return user;
         }
 
@@ -55,6 +87,7 @@ namespace IttFelTeheted.API.Data
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            user.ConfirmKey = randomString(12);
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();

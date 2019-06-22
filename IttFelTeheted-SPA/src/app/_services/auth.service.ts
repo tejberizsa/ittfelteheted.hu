@@ -27,6 +27,18 @@ login(model: any) {
   );
 }
 
+confirmEmail(model: any) {
+  return this.http.post(this.baseUrl + 'auth/confirm', model).pipe(
+    map((response: any) => {
+      const user = response;
+      if (user) {
+        localStorage.setItem('token', user.token);
+        this.decodedToken = this.jwtHelper.decodeToken(user.token);
+      }
+    })
+  );
+}
+
 register(user: any) {
   return this.http.post(this.baseUrl + 'auth/register', user);
 }

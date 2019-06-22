@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
       this.authService.register(this.user).subscribe(() => {
-        this.alertify.warning('Kérlek igazold vissza az e-mail címed!');
+        this.alertify.warning('Kérlek igazold vissza az e-mail címed, visszaigazoláshoz szükséges linket elküdtük a megadott címre!');
         this.alertify.success('Sikeres regisztráció');
         this.router.navigate(['/home']);
       }, error => {

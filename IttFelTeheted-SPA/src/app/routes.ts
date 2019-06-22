@@ -20,12 +20,14 @@ import { MemberPostResolver } from './_resolvers/member-post.resolver';
 import { MemberFollowedPostResolver } from './_resolvers/member-followed-post.resolver';
 import { MemberFollowedUserResolver } from './_resolvers/member-followed-user.resolver';
 import { PolicyComponent } from './policy/policy.component';
+import { MemberConfirmComponent } from './member/member-confirm/member-confirm.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent, resolve: {posts: PostListResolver, topics: TopicListResolver} },
     { path: 'detail/:id', component: QuestionDetailComponent, resolve: { post: PostDetailResolver, trendings: PostTrendingResolver } },
     { path: 'lists', component: ListsComponent },
     { path: 'policy', component: PolicyComponent },
+    { path: 'confirm/:id/:ckey', component: MemberConfirmComponent },
     { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
     {
         path: '',

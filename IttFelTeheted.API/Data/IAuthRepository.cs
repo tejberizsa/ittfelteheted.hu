@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using IttFelTeheted.API.Dtos;
 using IttFelTeheted.API.Models;
 
 namespace IttFelTeheted.API.Data
@@ -9,5 +10,6 @@ namespace IttFelTeheted.API.Data
          Task<User> Login(string username, string password);
          Task<bool> UserExists(string username);
          Task<bool> EMailExists(string email);
+         Task<User> ConfirmEmail(UserForConfirmDto userToConfirm);
     }
 }

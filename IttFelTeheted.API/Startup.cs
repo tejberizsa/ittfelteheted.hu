@@ -84,6 +84,13 @@ namespace IttFelTeheted.API
                 // app.UseHsts();
             }
 
+            using (var serviceScopeMigrate = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScopeMigrate.ServiceProvider.GetRequiredService<DataContext>();
+                context.Database.Migrate();
+            }
+
+
             // app.UseHttpsRedirection();
             seeder.SeedUser();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

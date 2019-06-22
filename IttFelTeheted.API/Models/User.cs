@@ -18,6 +18,7 @@ namespace IttFelTeheted.API.Models
         public DateTime LastActive { get; set; }
         public DateTime? ConfirmationEmailSent { get; set; }
         public bool EMailConfirmed { get; set; }
+        public string ConfirmKey { get; set; }
         public bool Deleted { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
