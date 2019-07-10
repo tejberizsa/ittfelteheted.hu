@@ -18,11 +18,11 @@
           </div>
           <div>
             <strong>Utoljára bejelentkezett:</strong>
-            <p>{{user.lastActive}}</p>
+            <p>{{user.lastActive | timeago }}</p>
           </div>
           <div>
             <strong>Regisztráció időpontja:</strong>
-            <p>{{user.registrationDate}}</p>
+            <p>{{user.registrationDate | timeago }}</p>
           </div>
         </div>
         <div class="card-footer">

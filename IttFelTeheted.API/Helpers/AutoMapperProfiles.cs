@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using AutoMapper;
 using IttFelTeheted.API.Dtos;
@@ -39,7 +40,8 @@ namespace IttFelTeheted.API.Helpers
                 .ForMember(d => d.Username, opt => opt.MapFrom(s => s.User.Username))
                 .ForMember(d => d.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url))
                 .ForMember(d => d.UserPhotoUrl, opt => opt.MapFrom(p => p.User.Photos.FirstOrDefault(up => up.IsMain == true).Url))
-                .ForMember(d => d.AnswerCount, opt => opt.MapFrom(p => p.Answers.Count()));
+                .ForMember(d => d.AnswerCount, opt => opt.MapFrom(p => p.Answers.Count()))
+                .ForMember(d => d.PostBody, opt => opt.MapFrom(p => string.IsNullOrEmpty(p.PostBody) ? p.PostBody : p.PostBody.Substring(0, Math.Min(p.PostBody.Length, 222))));
             CreateMap<Post, PostForTrendingDto>()
                 .ForMember(d => d.AnswerCount, opt => opt.MapFrom(p => p.Answers.Count()))
                 .ForMember(d => d.PhotoUrl, opt => opt.MapFrom(p => p.Photos.FirstOrDefault(ph => ph.IsMain == true).Url))

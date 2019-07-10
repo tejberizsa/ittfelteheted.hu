@@ -10,8 +10,6 @@ import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } 
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FacebookModule } from 'ngx-facebook';
 
@@ -116,8 +114,6 @@ export class MyIntl extends TimeagoIntl {
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],
          HttpClientModule,
-         MatSidenavModule,
-         MatListModule,
          BrowserAnimationsModule,
          ReactiveFormsModule,
          FormsModule,

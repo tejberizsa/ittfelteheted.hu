@@ -13,18 +13,22 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
+  minDate = new Date();
+  maxDate = new Date();
 
   constructor(private authService: AuthService, private router: Router,
     private alertify: AlertifyService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.minDate.setFullYear(this.minDate.getFullYear() - 18);
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 99);
     this.createRegisterForm();
   }
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
       gender: ['male'],
-      age: [null, [Validators.required, Validators.min(16), Validators.max(99)]],
+      birth: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
@@ -35,6 +39,17 @@ export class RegisterComponent implements OnInit {
   passwordMatchValidator(g: FormGroup) {
     return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};
   }
+
+  // ageMinValidator(g: FormGroup) {
+  //   console.log('validating');
+  //   console.log(g.get('birth').value);
+  //   console.log(this.minDate);
+  //   return this.registerForm.get('birth').value <= this.minDate ? null : {'mismatch': true};
+  // }
+
+  // ageMaxValidator(g: FormGroup) {
+  //   return g.get('birth').value >= this.maxDate ? null : {'mismatch': true};
+  // }
 
   register() {
     if (this.registerForm.valid) {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IttFelTeheted.API.Models
 {
@@ -11,7 +12,18 @@ namespace IttFelTeheted.API.Models
         public byte[] PasswordSalt { get; set; }
         public string EMail { get; set; }
         public string Gender { get; set; }
-        public int Age { get; set; }
+        [NotMapped]
+        public int Age
+        {
+            get 
+            {
+                var age = DateTime.Today.Year - Birth.Year;
+                if (Birth.Date > DateTime.Today.AddYears(-age))
+                    age--;
+                return age;
+            }
+        }
+        public DateTime Birth { get; set; }
         public string Introduction { get; set; }
         public ICollection<UserPhoto> Photos { get; set; }
         public DateTime RegistrationDate { get; set; }

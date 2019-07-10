@@ -18,8 +18,7 @@ namespace IttFelTeheted.API.Dtos
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Életkort nem adtál meg")]
-        [Range(16, 99, ErrorMessage = "16 éves kor alatt nem regisztrálhatsz")]
-        public int Age { get; set; }
+        public DateTime Birth { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime LastActive { get; set; }
         public UserForRegisterDto()

@@ -4,9 +4,10 @@ export interface User {
     id: number;
     username: string;
     gender: string;
-    age: number;
+    birth: Date;
     registrationDate: Date;
     lastActive: Date;
+    age?: number;
     introduction?: string;
     photoUrl?: string;
     photos?: Photo[];

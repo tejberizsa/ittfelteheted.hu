@@ -15,14 +15,14 @@
           </div>
 
           <div class="form-group">
-            <input type="number" [ngClass]="{'is-invalid': registerForm.get('age').errors && registerForm.get('age').touched}" 
-            class="form-control" formControlName="age" placeholder="Életkor">
+            <input type="date" [ngClass]="{'is-invalid': registerForm.get('birth').errors && registerForm.get('birth').touched}" 
+            class="form-control" formControlName="birth" placeholder="Életkor">
             <div class="invalid-feedback" 
-            *ngIf="registerForm.get('age').hasError('required') && registerForm.get('age').touched" >Életkor kötelező</div>
+            *ngIf="registerForm.get('birth').hasError('required') && registerForm.get('birth').touched" >Életkor kötelező</div>
             <div class="invalid-feedback" 
-            *ngIf="registerForm.get('age').hasError('min') && registerForm.get('age').touched" >Túl fiatal vagy</div>
+            *ngIf="registerForm.get('birth').hasError('min') && registerForm.get('birth').touched" >Túl fiatal vagy</div>
             <div class="invalid-feedback" 
-            *ngIf="registerForm.get('age').hasError('max') && registerForm.get('age').touched" >Ennyire nem lehetsz öreg</div>
+            *ngIf="registerForm.get('birth').hasError('max') && registerForm.get('birth').touched" >Ennyire nem lehetsz öreg</div>
           </div>
 
           <div class="form-group">
