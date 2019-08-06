@@ -1,5 +1,5 @@
 <div class="card mb-3 question-card">
-  <h5 class="card-header"  [routerLink]="['/detail/', post.id]">{{post.title}}</h5>
+  <h5 class="card-header" [routerLink]="['/detail/', post.id]">{{post.title}}</h5><a [href]="hrefUrl"></a>
   <div class="card-body">
     <h6 class="card-text" [innerHTML]="post.postBody" [routerLink]="['/detail/', post.id]"></h6>
     <ul class="list-inline member-icons animate text-right" *ngIf="post.isFollowedByCurrentUser">

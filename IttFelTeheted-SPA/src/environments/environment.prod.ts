@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   apiUrl: 'api/',
-  domain: 'ittfelteheted.hu'
+  domain: 'https://ittfelteheted.hu'
 };

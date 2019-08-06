@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { PostService } from 'src/app/_services/post.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Answer } from 'src/app/_models/answer';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-question-card',
@@ -12,12 +13,14 @@ import { Answer } from 'src/app/_models/answer';
 })
 export class QuestionCardComponent implements OnInit {
   @Input() post: Post;
+  hrefUrl: string;
   // answer: Answer;
 
   constructor(private authService: AuthService, private userService: PostService,
     private alertify: AlertifyService, private postService: PostService) { }
 
   ngOnInit() {
+    this.hrefUrl = environment.domain + '/detail/' + this.post.id;
   }
 
   selectFirstAnswer() {
