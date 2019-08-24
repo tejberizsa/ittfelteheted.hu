@@ -1,0 +1,11 @@
+<div class="btn-group mr-2" role="group">
+  <button class="btn btn-small btn-info" (click)="onFirst()">&laquo;</button>
+  <button class="btn btn-small btn-info" (click)="onPrev()">&lsaquo;</button>
+  <a class="btn btn-small btn-info" *ngFor="let pageNum of getPages()" 
+                                          (click)="onPage(pageNum)" 
+                                          [ngClass]="{'active': pageNum == currentPage, 'disabled': loading}"
+                                          href="{{baseUrl}}/?page={{pageNum}}"
+                                          >{{ pageNum }}</a>
+  <button class="btn btn-small btn-info" (click)="onNext()">&rsaquo;</button>
+  <button class="btn btn-small btn-info" (click)="onLast()">&raquo;</button>
+</div>

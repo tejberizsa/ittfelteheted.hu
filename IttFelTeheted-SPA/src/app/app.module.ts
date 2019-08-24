@@ -54,6 +54,7 @@ import { MemberFollowedUserResolver } from './_resolvers/member-followed-user.re
 import { PolicyComponent } from './policy/policy.component';
 import { environment } from 'src/environments/environment';
 import { MemberConfirmComponent } from './member/member-confirm/member-confirm.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -109,7 +110,8 @@ export class MyIntl extends TimeagoIntl {
          MemberInterestComponent,
          MemberFollowCardComponent,
          PolicyComponent,
-         MemberConfirmComponent
+         MemberConfirmComponent,
+         PaginationComponent
       ],
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],

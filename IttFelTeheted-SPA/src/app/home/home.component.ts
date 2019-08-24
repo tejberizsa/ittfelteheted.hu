@@ -29,6 +29,11 @@ export class HomeComponent implements OnInit {
       this.pagination = data['posts'].pagination;
       this.topics = data['topics'];
     });
+    const routePage = +this.route.snapshot.queryParams['page'];
+    if (routePage !== this.pagination.currentPage && routePage > 0) {
+      console.log(`routePage: ${routePage}, currentPage: ${this.pagination.currentPage}`);
+      this.pagination.currentPage = routePage;
+    }
   }
 
   loadPosts() {
@@ -47,14 +52,19 @@ export class HomeComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  pageChanged(event: any): void {
-    this.pagination.currentPage = event.page;
+  goToPage(n: number): void {
+    this.pagination.currentPage = n;
     this.loadPosts();
     window.scrollTo(0, 0);
   }
 
+  // pageChanged(event: any): void {
+  //   this.pagination.currentPage = event.page;
+  //   this.loadPosts();
+  //   window.scrollTo(0, 0);
+  // }
+
   getTopicIcon(topicIcon: string) {
     return topicIcon + ' mr-4';
   }
-
 }
