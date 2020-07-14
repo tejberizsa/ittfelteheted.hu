@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/_models/post';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-import { FileUploader } from 'ng2-file-upload';
+// import { environment } from 'src/environments/environment';
+// import { FileUploader } from 'ng2-file-upload';
 import { AuthService } from 'src/app/_services/auth.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { PostService } from 'src/app/_services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Topic } from 'src/app/_models/topic';
-import { Photo } from 'src/app/_models/photo';
+// import { Photo } from 'src/app/_models/photo';
 
 @Component({
   selector: 'app-question-add',
@@ -20,9 +20,9 @@ export class QuestionAddComponent implements OnInit {
   post: Post;
   postId: number;
   postForm: FormGroup;
-  baseUrl = environment.apiUrl;
-  uploader: FileUploader;
-  hasBaseDropZoneOver = false;
+  // baseUrl = environment.apiUrl;
+  // uploader: FileUploader;
+  // hasBaseDropZoneOver = false;
   topics: Topic[];
 
   constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute,
@@ -56,9 +56,9 @@ export class QuestionAddComponent implements OnInit {
     };
   }
 
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
+  // fileOverBase(e: any): void {
+  //   this.hasBaseDropZoneOver = e;
+  // }
 
   createPostForm() {
     this.postForm = this.fb.group({
@@ -79,35 +79,36 @@ export class QuestionAddComponent implements OnInit {
       this.post.userId = this.authService.decodedToken.nameid;
       this.postService.sendPost(this.post).subscribe((postReturn: Post) => {
       this.postId = postReturn.id;
-      this.initializeUploader();
-      this.uploader.uploadAll();
+      // this.initializeUploader();
+      // this.uploader.uploadAll();
       this.alertify.success('Kérdésed, posztod megjelent az oldalon');
+      this.router.navigate(['/detail/', this.postId]);
       }, error => {
         this.alertify.error(error);
       });
     }
   }
 
-  initializeUploader() {
-    this.uploader = new FileUploader({
-      url: this.baseUrl + 'posts/' + this.postId + '/photos',
-      authToken: 'Bearer ' + localStorage.getItem('token'),
-      isHTML5: true,
-      allowedFileType: ['image'],
-      removeAfterUpload: true,
-      autoUpload: false,
-      maxFileSize: 10 * 1024 * 1024
-    });
+  // initializeUploader() {
+  //   this.uploader = new FileUploader({
+  //     url: this.baseUrl + 'posts/' + this.postId + '/photos',
+  //     authToken: 'Bearer ' + localStorage.getItem('token'),
+  //     isHTML5: true,
+  //     allowedFileType: ['image'],
+  //     removeAfterUpload: true,
+  //     autoUpload: false,
+  //     maxFileSize: 10 * 1024 * 1024
+  //   });
 
-    this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false; };
+  //   this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false; };
 
-    this.uploader.onSuccessItem = (item, response, status, headers) => {
-      if (response) {
-        if (this.uploader.queue.length < 1) {
-          this.router.navigate(['/detail/', this.postId]);
-        }
-      }
-    };
-  }
+  //   this.uploader.onSuccessItem = (item, response, status, headers) => {
+  //     if (response) {
+  //       if (this.uploader.queue.length < 1) {
+  //         this.router.navigate(['/detail/', this.postId]);
+  //       }
+  //     }
+  //   };
+  // }
 
 }
