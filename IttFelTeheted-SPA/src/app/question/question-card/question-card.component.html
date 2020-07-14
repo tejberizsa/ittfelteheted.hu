@@ -5,7 +5,7 @@
     <ul class="list-inline member-icons animate text-right" *ngIf="post.isFollowedByCurrentUser">
         <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/detail/', post.id]"><i class="fa fa-eye"></i></button></li>
         <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/member/', post.userId]" [queryParams]="{tab: 4}"><i class="fa fa-user"></i></button></li>
-        <li class="list-inline-item"><button class="btn btn-secondary" (click)="sendDisfollow()"><i class="fa fa-heart"></i></button></li>
+        <li class="list-inline-item"><button class="btn btn-secondary" style="color: red;" (click)="sendDisfollow()"><i class="fa fa-heart"></i></button></li>
       </ul>
       <ul class="list-inline member-icons animate text-right" *ngIf="!post.isFollowedByCurrentUser">
           <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/detail/', post.id]"><i class="fa fa-eye"></i></button></li>

@@ -3,29 +3,29 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
-          aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+          aria-expanded="false"  (click)="isCollapsed = !isCollapsed">
             <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand ml-4" [routerLink]="['/home']">IttFelteheted.hu</a>
+      <a class="navbar-brand ml-4" [routerLink]="['/home']" (click)="isCollapsed = true">IttFelteheted.hu</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse collapse" [collapse]=isCollapsed>
       <ul class="navbar-nav mr-auto">
         <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/lists']">Toplista</a>
+          <a class="nav-link" [routerLink]="['/lists']" (click)="isCollapsed = !isCollapsed">Toplista</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active" >
-          <a class="nav-link text-info" [routerLink]="['/detail/', 0]">Egy véletlen kérdés</a>
+          <a class="nav-link text-info" [routerLink]="['/detail/', 0]" (click)="isCollapsed = !isCollapsed">Egy véletlen kérdés</a>
         </li>
         <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/addpost']">Új Kérdés</a>
+          <a class="nav-link" [routerLink]="['/addpost']" (click)="isCollapsed = !isCollapsed">Új Kérdés</a>
         </li>
         <li *ngIf="!loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/register']">Új Kérdés</a>
+          <a class="nav-link" [routerLink]="['/register']" (click)="isCollapsed = !isCollapsed">Új Kérdés</a>
         </li>
         <li *ngIf="loggedIn()" class="nav-item mr-sm-4" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/messages']">Üzenetek</a>
+          <a class="nav-link" [routerLink]="['/messages']" (click)="isCollapsed = !isCollapsed">Üzenetek</a>
         </li>
       </ul>
       
@@ -34,12 +34,12 @@
           Üdvözlet {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Profil</a>
+          <a class="dropdown-item" data-toggle="collapse" [routerLink]="['/member/edit']" (click)="isCollapsed = !isCollapsed"><i class="fa fa-user"></i> Profil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" [routerLink]="['/policy']"><i class="fa fa-info-circle"></i> Adatvédelem</a>
+          <a class="dropdown-item" data-toggle="collapse" [routerLink]="['/policy']" (click)="isCollapsed = !isCollapsed"><i class="fa fa-info-circle"></i> Adatvédelem</a>
           <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Kijelentkezek</a>
+          <a class="dropdown-item" data-toggle="collapse" (click)="logout()" (click)="isCollapsed = !isCollapsed"><i class="fa fa-sign-out"></i> Kijelentkezek</a>
         </div>
       </div>
   
