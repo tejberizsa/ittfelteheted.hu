@@ -44,32 +44,6 @@ namespace IttFelTeheted.API.Data
                 }
                 _context.SaveChanges();
             }
-
-            // if(_context.Posts.Count() < 1)
-            // {
-            //     var postData = System.IO.File.ReadAllText("Data/PostSeedData.json");
-            //     var settings = new JsonSerializerSettings
-            //             {
-            //                 NullValueHandling = NullValueHandling.Ignore,
-            //                 MissingMemberHandling = MissingMemberHandling.Ignore
-            //                 // Error = HandleDeserializationError
-            //             };
-            //     var posts = JsonConvert.DeserializeObject<List<Post>>(postData, settings);
-            //     Random random = new Random();
-            //     int randomUser = random.Next(1, 20);
-            //     int randomTopic = random.Next(1, 30);
-            //     foreach (var post in posts)
-            //     {
-            //         post.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
-            //         post.Topic = _context.Topics.FirstOrDefault(x => x.Id == randomTopic);
-            //         foreach (var answer in post.Answers)
-            //         {
-            //             answer.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
-            //         }
-            //         _context.Posts.Add(post);
-            //     }
-            //     _context.SaveChanges();
-            // }
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

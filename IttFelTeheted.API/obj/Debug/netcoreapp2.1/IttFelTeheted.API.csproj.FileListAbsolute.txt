@@ -54,3 +54,4 @@ E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\It
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.RazorTargetAssemblyInfo.cache
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.dll
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.pdb
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\Migrations\PostSeed.sql
