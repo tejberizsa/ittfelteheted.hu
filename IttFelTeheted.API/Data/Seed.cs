@@ -17,20 +17,23 @@ namespace IttFelTeheted.API.Data
 
         public void SeedUser()
         {
-            // var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
-            // var users = JsonConvert.DeserializeObject<List<User>>(userData);
-            // foreach (var user in users)
-            // {
-            //     byte[] passwordHash, passwordSalt;
-            //     CreatePasswordHash("Password", out passwordHash, out passwordSalt);
+            if(_context.Users.Count() < 1)
+            {
+                var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
+                var users = JsonConvert.DeserializeObject<List<User>>(userData);
+                foreach (var user in users)
+                {
+                    byte[] passwordHash, passwordSalt;
+                    CreatePasswordHash("Password", out passwordHash, out passwordSalt);
 
-            //     user.PasswordHash = passwordHash;
-            //     user.PasswordSalt = passwordSalt;
-            //     user.Username = user.Username.ToLower();
+                    user.PasswordHash = passwordHash;
+                    user.PasswordSalt = passwordSalt;
+                    user.Username = user.Username.ToLower();
 
-            //     _context.Users.Add(user);
-            // }
-            // _context.SaveChanges();
+                    _context.Users.Add(user);
+                }
+                _context.SaveChanges();
+            }
             if (_context.Topics.Count() < 1)
             {
                 var topicData = System.IO.File.ReadAllText("Data/TopicSeedData.json");
@@ -42,28 +45,31 @@ namespace IttFelTeheted.API.Data
                 _context.SaveChanges();
             }
 
-            // var postData = System.IO.File.ReadAllText("Data/PostSeedData.json");
-            // var settings = new JsonSerializerSettings
-            //         {
-            //             NullValueHandling = NullValueHandling.Ignore,
-            //             MissingMemberHandling = MissingMemberHandling.Ignore,
-            //             Error = HandleDeserializationError
-            //         };
-            // var posts = JsonConvert.DeserializeObject<List<Post>>(postData, settings);
-            // Random random = new Random();
-            // int randomUser = random.Next(1, 20);
-            // int randomTopic = random.Next(1, 30);
-            // foreach (var post in posts)
+            // if(_context.Posts.Count() < 1)
             // {
-            //     post.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
-            //     post.Topic = _context.Topics.FirstOrDefault(x => x.Id == randomTopic);
-            //     foreach (var answer in post.Answers)
+            //     var postData = System.IO.File.ReadAllText("Data/PostSeedData.json");
+            //     var settings = new JsonSerializerSettings
+            //             {
+            //                 NullValueHandling = NullValueHandling.Ignore,
+            //                 MissingMemberHandling = MissingMemberHandling.Ignore
+            //                 // Error = HandleDeserializationError
+            //             };
+            //     var posts = JsonConvert.DeserializeObject<List<Post>>(postData, settings);
+            //     Random random = new Random();
+            //     int randomUser = random.Next(1, 20);
+            //     int randomTopic = random.Next(1, 30);
+            //     foreach (var post in posts)
             //     {
-            //         answer.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
+            //         post.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
+            //         post.Topic = _context.Topics.FirstOrDefault(x => x.Id == randomTopic);
+            //         foreach (var answer in post.Answers)
+            //         {
+            //             answer.User = _context.Users.FirstOrDefault(x => x.Id == randomUser);
+            //         }
+            //         _context.Posts.Add(post);
             //     }
-            //     _context.Posts.Add(post);
+            //     _context.SaveChanges();
             // }
-            // _context.SaveChanges();
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
