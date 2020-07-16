@@ -55,3 +55,9 @@ E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\It
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.dll
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.pdb
 E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\Migrations\PostSeed.sql
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\appsettings.Development.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\appsettings.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\Data\TopicSeedData.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\Data\UserSeedData.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+E:\work\JesusSaves\ittfelteheted.hu\IttFelTeheted.API\obj\Debug\netcoreapp2.1\IttFelTeheted.API.genruntimeconfig.cache

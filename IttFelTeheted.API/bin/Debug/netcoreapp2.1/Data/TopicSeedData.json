@@ -1,0 +1,122 @@
+[
+    {
+        "TopicName": "Ajándék",
+        "Icon": "fa fa-gift"
+    },
+    {
+        "TopicName": "Állatok",
+        "Icon": "fa fa-paw"
+    },
+    {
+        "TopicName": "Design",
+        "Icon": "fa fa-crop"
+    },
+    {
+        "TopicName": "Divat",
+        "Icon": "fa fa-pied-piper"
+    },
+    {
+        "TopicName": "Család",
+        "Icon": "fa fa-heart"
+    },
+    {
+        "TopicName": "Egészség",
+        "Icon": "fa fa-heartbeat"
+    },
+    {
+        "TopicName": "Építészet",
+        "Icon": "fa fa-building-o"
+    },
+    {
+        "TopicName": "Események",
+        "Icon": "fa fa-calendar-check-o"
+    },
+    {
+        "TopicName": "Ételek és italok",
+        "Icon": "fa fa-coffee"
+    },
+    {
+        "TopicName": "Gyerekek",
+        "Icon": "fa fa-child"
+    },
+    {
+        "TopicName": "Hírességek",
+        "Icon": "fa fa-star"
+    },
+    {
+        "TopicName": "Járművek",
+        "Icon": "fa fa-car"
+    },
+    {
+        "TopicName": "Kertészet",
+        "Icon": "fa fa-tree"
+    },
+    {
+        "TopicName": "Kultúra, közösség",
+        "Icon": "fa fa-book"
+    },
+    {
+        "TopicName": "Otthon",
+        "Icon": "fa fa-houzz"
+    },
+    {
+        "TopicName": "Geek",
+        "Icon": "fa fa-laptop"
+    },
+    {
+        "TopicName": "Művészet",
+        "Icon": "fa fa-weixin"
+    },
+    {
+        "TopicName": "Oktatás",
+        "Icon": "fa fa-graduation-cap"
+    },
+    {
+        "TopicName": "Politika",
+        "Icon": "fa fa-users"
+    },
+    {
+        "TopicName": "Sport és fitness",
+        "Icon": "fa fa-bicycle"
+    },
+    {
+        "TopicName": "Szépségápolás",
+        "Icon": "fa fa-flask"
+    },
+    {
+        "TopicName": "Szerelem",
+        "Icon": "fa fa-heart"
+    },
+    {
+        "TopicName": "Szórakozás",
+        "Icon": "fa fa-smile-o"
+    },
+    {
+        "TopicName": "Technológia",
+        "Icon": "fa fa-microchip"
+    },
+    {
+        "TopicName": "Termékek",
+        "Icon": "fa fa-product-hunt"
+    },
+    {
+        "TopicName": "Történelem",
+        "Icon": "fa fa-history"
+    },
+    {
+        "TopicName": "Tudomány",
+        "Icon": "fa fa-flask"
+    },
+    {
+        "TopicName": "Utazás",
+        "Icon": "fa fa-plane"
+    },
+    {
+        "TopicName": "Üzlet",
+        "Icon": "fa fa-money"
+    },
+    {
+        "TopicName": "Egyéb",
+        "Icon": "fa fa-random"
+    }
+]

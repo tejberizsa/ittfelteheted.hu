@@ -84,7 +84,7 @@ namespace IttFelTeheted.API.Data
             if (postParams.isFollowQuery != null)
             {
                 posts = _context.Posts
-                        .FromSql("SELECT Posts.* FROM Posts JOIN PostFollows ON Posts.Id=PostFollows.FollowedId WHERE PostFollows.FollowerId={0}", postParams.UserId)
+                        .FromSql("SELECT \"Posts\".* FROM \"Posts\" JOIN \"PostFollows\" ON \"Posts\".\"Id\"=\"PostFollows\".\"FollowedId\" WHERE \"PostFollows\".\"FollowerId\"={0}", postParams.UserId)
                                 .Include(x => x.Topic)
                                 .Include(x => x.User)
                                 .Include(x => x.Answers)
@@ -135,7 +135,7 @@ namespace IttFelTeheted.API.Data
             var users = _context.Users.AsQueryable();
             if (userParams.UserId != null)
                 users = _context.Users
-                        .FromSql("SELECT Users.* FROM Users JOIN UserFollows ON Users.Id=UserFollows.FollowedId WHERE UserFollows.FollowerId={0}", userParams.UserId)
+                        .FromSql("SELECT \"Users\".* FROM \"Users\" JOIN \"UserFollows\" ON \"Users\".\"Id\"=\"UserFollows\".\"FollowedId\" WHERE \"UserFollows\".\"FollowerId\"={0}", userParams.UserId)
                         .Include(u => u.Photos)
                         .OrderByDescending(x => x.Username).AsQueryable();
             userParams.PageSize = 18;
